@@ -5,6 +5,12 @@ data
 !.env.template
 !.bumpversion.cfg
 
+
+packages/eightballer/connections/
+packages/eightballer/contracts/
+packages/eightballer/protocols/
+packages/eightballer/skills/prometheus/
+
 __pycache__
 
 *private_key*
@@ -15,3 +21,5 @@ packages/*
 
 agent/
 service/
+
+
