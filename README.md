@@ -1,38 +1,75 @@
-# create-svelte
+# eth_global_online
 
-Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/master/packages/create-svelte).
 
-## Creating a project
 
-If you're seeing this, you've probably already done this step. Congrats!
+## Table of Contents
 
-```bash
-# create a new project in the current directory
-npm create svelte@latest
+- [Getting Started](#getting-started)
+  - [Installation](#installation)
+  - [Setup for Development](#setup-for-development)
+- [Usage](#usage)
+- [Commands](#commands)
+  - [Testing](#testing)
+  - [Linting](#linting)
+  - [Formatting](#formatting)
+  - [Releasing](#releasing)
+- [License](#license)
 
-# create a new project in my-app
-npm create svelte@latest my-app
+## Getting Started
+
+### Installation
+
+Install `eth_global_online` with pip:
+
+```shell
+pip install eth_global_online
 ```
 
-## Developing
+### Setup for Development
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+If you're looking to contribute or develop with `eth_global_online`, get the source code and set up the environment:
 
-```bash
-npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
+```shell
+git clone https://github.com/eightballer/eth_global_online
+cd eth_global_online
+poetry install && poetry shell
 ```
 
-## Building
+## Commands
 
-To create a production version of your app:
+Here are common commands you might need while working with the project:
 
-```bash
-npm run build
+### Formatting
+
+```shell
+make fmt
 ```
 
-You can preview the production build with `npm run preview`.
+### Linting
 
-> To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
+```shell
+make lint
+```
+
+### Testing
+
+```shell
+make test
+```
+
+### Locking
+
+```shell
+make hashes
+```
+
+### all
+
+```shell
+make all
+```
+
+## License
+
+This project is licensed under the [Apache License 2.0](https://www.apache.org/licenses/LICENSE-2.0)
+
