@@ -8,7 +8,7 @@ fingerprint: {}
 fingerprint_ignore_patterns: []
 connections:
 - eightballer/prometheus:0.1.1:bafybeibc5x4ldgtl7jrgz4vjtbm3o6bf2zeyfsa47vftbpeszotl3x2knm
-- valory/ledger:0.19.0:bafybeicjd3r44ewpkdvbb5wtr4ikrimoeavjfp6fmyu4cegv4uxg6gpsay
+- valory/ledger:0.19.0:bafybeiagnsog5xcs6ipme5l2uckbfctzd3whogxfpbyfdub62sh5gyh67a
 contracts:
 - eightballer/erc_20:0.1.0:bafybeihzyver74cyqzngkzicirjnrphg464hzsyflngosrda7ickmvapzi
 protocols:
@@ -19,7 +19,7 @@ protocols:
 - valory/http:1.0.0:bafybeieshrrplt5oadws5tz3rhjo6m2spchdyhkwa2z6ze2bs4ivauusfq
 - valory/ledger_api:1.0.0:bafybeidltb2fvcfokf7a2i3jnrf4kmmsn5bxmcrwdtbz2nrrzhpj4dlzwe
 skills:
-- eightballer/balance_metrics:0.1.0:bafybeiai5iygphkxr2mchuw2fu2n4zc44wriwa22lojqi7jlwdqhaa46a4
+- eightballer/balance_metrics:0.1.0:bafybeicf5yh3iopahcg66rzqxcb7kppnhlvvfqwk6h3whdcrdoaj6jmgiu
 - eightballer/prometheus:0.1.0:bafybeid3wfmcdwagudn6xnc32blf2vgtxc35ymricoz3jqvonzv3i66eii
 default_ledger: ethereum
 required_ledgers:
@@ -56,11 +56,14 @@ models:
     args:
       ledger_ids:
       - ethereum
+      - filecoin
+      - gnosis
+      - matic
+      - scroll
+      - spark
+      - mantle
       prometheus_enabled: true
-      token_addresses:
-        ethereum:
-        - '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2'
-        - '0x0001a500a6b18995b03f44bb040a5ffc28e45cb0'
+      token_addresses: {}
 ---
 public_id: eightballer/prometheus:0.1.1:bafybeibc5x4ldgtl7jrgz4vjtbm3o6bf2zeyfsa47vftbpeszotl3x2knm
 type: connection

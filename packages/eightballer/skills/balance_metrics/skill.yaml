@@ -8,14 +8,14 @@ license: Apache-2.0
 aea_version: '>=1.0.0, <2.0.0'
 fingerprint:
   __init__.py: bafybeig6ccpss2phq7uoj6jnco2xxh4rswtspxpxo3yk4papv7j4d2o5eu
-  behaviours.py: bafybeig3tar4gtoifnrn5rzkf3emeai7ugf7wi22fmqzequnpalz54nzkm
+  behaviours.py: bafybeidntgux7ynv33o373yoaksdg6ssgiu5lhmiep7o7xtyqqdzgfzh2q
   dialogues.py: bafybeie2nmx4aucby7fy6yl6rzroubybcltvj5qlhkizxlrm6rrk5hio4q
   handlers.py: bafybeiax5mgcltn3zzl33muao4juh6devvgl362ozrc2kgg4uqfjdpdkau
-  strategy.py: bafybeieioq63vue24t6bmjz4hri6jueddtxueu42nqiwdzrcfb4b6rihle
+  strategy.py: bafybeib3d435atza253laaotibg4qfidb7jh4c5nbcej4yr55e23sgyuja
   tests/test_dialogues.py: bafybeicsgx4k2r3g4nw6rrt34mp2z4dj3ddzd3nljwf4yqzynwujccdpdq
 fingerprint_ignore_patterns: []
 connections:
-- valory/ledger:0.19.0:bafybeicjd3r44ewpkdvbb5wtr4ikrimoeavjfp6fmyu4cegv4uxg6gpsay
+- valory/ledger:0.19.0:bafybeiagnsog5xcs6ipme5l2uckbfctzd3whogxfpbyfdub62sh5gyh67a
 contracts:
 - eightballer/erc_20:0.1.0:bafybeihzyver74cyqzngkzicirjnrphg464hzsyflngosrda7ickmvapzi
 protocols:
@@ -44,9 +44,7 @@ models:
       ledger_ids:
       - ethereum
       prometheus_enabled: true
-      token_addresses:
-        ethereum:
-        - '0x0001a500a6b18995b03f44bb040a5ffc28e45cb0'
+      token_addresses: {}
     class_name: BalanceMetricsStrategy
   contract_api_dialogues:
     args: {}

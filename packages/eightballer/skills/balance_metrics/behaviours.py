@@ -76,7 +76,7 @@ class BalancePollingBehaviour(PrometheusBehaviour):
                         msg, dialogue = self.add_prometheus_metric(
                             metric_name,
                             "Gauge",
-                            f"Balance of {token.name} on {ledger.chain_name}",
+                            f"Balance of {token.symbol} on {ledger.chain_name}",
                             {
                                 "agent_address": self.context.agent_address,
                             },
@@ -109,7 +109,7 @@ class BalancePollingBehaviour(PrometheusBehaviour):
                 self.add_prometheus_metric(
                     metric_name,
                     "Gauge",
-                    f"Balance of {ledger.chain_name} on {ledger.chain_name}",
+                    f"Balance of {ledger.native_currency} on {ledger.chain_name}",
                     {
                         "agent_address": self.context.agent_address,
                     },
