@@ -57,3 +57,7 @@ test:
 	poetry run adev -v test
 
 all: fmt lint test hashes
+
+run_agent:
+	 bash scripts/run_single_agent.sh eightballer/defi_agent
+

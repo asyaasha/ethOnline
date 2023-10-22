@@ -5,13 +5,21 @@ data
 !.env.template
 !.bumpversion.cfg
 
+
+packages/eightballer/connections/
+packages/eightballer/contracts/
+packages/eightballer/protocols/
+packages/eightballer/skills/prometheus/
+
 __pycache__
 
 *private_key*
 keys.json
+packages/open_aea/
+packages/valory/
 
-packages/*
-!packages/eightballer
 
 agent/
 service/
+
+
