@@ -72,4 +72,8 @@ pull_from_main:
 	rm -rf packages/open_aea
 	git checkout packages
 	poetry run autonomy packages sync
+
+start_infra:
+	docker-compose up --force-recreate -d --remove-orphans grafana prometheus
+
 	
