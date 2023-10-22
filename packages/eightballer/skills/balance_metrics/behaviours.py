@@ -128,8 +128,10 @@ class BalancePollingBehaviour(PrometheusBehaviour):
                                     "ledger": ledger.chain_name,
                                     },
                         )
-
         super().act()
+        self.context.shared_state["balances"] = {
+            k.ledger_id: v for k, v in self.strategy.native_balances.items()
+        }
 
     def teardown(self) -> None:
         """Implement the task teardown."""
@@ -162,7 +164,7 @@ class BalancePollingBehaviour(PrometheusBehaviour):
             ledger_id=ledger.ledger_id,
             address=self.context.agent_address,
         )
-        self.context.logger.info(
+        self.context.logger.debug(
             f"Requesting token info for {ledger.chain_name} native token"
         )
         self.context.outbox.put_message(message=ledger_api_msg)
@@ -185,7 +187,7 @@ class BalancePollingBehaviour(PrometheusBehaviour):
                 kwargs=Kwargs({}),
             )
             self.context.outbox.put_message(message=contract_api_msg)
-        self.context.logger.info(f"Requesting token info for {token_address}")
+        self.context.logger.debug(f"Requesting token info for {token_address}")
 
     def request_erc20_balance(self, token_address: str) -> None:
         """
@@ -205,7 +207,7 @@ class BalancePollingBehaviour(PrometheusBehaviour):
                 kwargs=Kwargs({"account": self.context.agent_address}),
             )
             self.context.outbox.put_message(message=contract_api_msg)
-            self.context.logger.info(f"Requesting balance of {token_address}")
+            self.context.logger.debug(f"Requesting balance of {token_address}")
 
 
 def to_metric_name(ledger,

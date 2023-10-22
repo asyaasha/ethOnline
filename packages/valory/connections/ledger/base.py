@@ -33,6 +33,7 @@ from aea.helpers.async_utils import AsyncState
 from aea.mail.base import Envelope
 from aea.protocols.base import Message
 from aea.protocols.dialogue.base import Dialogue, Dialogues
+from packages.valory.protocols.ledger_api.message import LedgerApiMessage
 
 ETHEREUM_LEDGER_ID = "ethereum"
 
@@ -180,6 +181,8 @@ class RequestDispatcher(ABC):
             )
         performative = message.performative
         handler = self.get_handler(performative)
+        if performative == LedgerApiMessage.Performative.GET_RAW_TRANSACTION:
+            return self.loop.create_task(handler(api, message, dialogue))
         return self.loop.create_task(self.run_async(handler, api, message, dialogue))
 
     def get_handler(self, performative: Any) -> Callable[[Any], Task]:

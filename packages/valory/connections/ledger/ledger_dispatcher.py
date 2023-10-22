@@ -43,6 +43,7 @@ _default_logger = logging.getLogger(
     "aea.packages.valory.connections.ledger.ledger_dispatcher"
 )
 
+import traceback
 
 class LedgerApiDialogues(BaseLedgerApiDialogues):
     """The dialogues class keeps track of all dialogues."""
@@ -215,8 +216,9 @@ class LedgerApiRequestDispatcher(RequestDispatcher):
                 raise_on_try=True,
                 **message.terms.kwargs,
             )
-        except Exception as e:  # pylint: disable=broad-except  # pragma: nocover
-            return self.get_error_message(e, api, message, dialogue)
+        except Exception as error:  # pylint: disable=broad-except  # pragma: nocover
+            print(traceback.format_exc())
+            return self.get_error_message(error, api, message, dialogue)
 
         if raw_transaction is None:
             response = self.get_error_message(

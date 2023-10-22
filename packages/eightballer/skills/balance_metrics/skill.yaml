@@ -8,9 +8,9 @@ license: Apache-2.0
 aea_version: '>=1.0.0, <2.0.0'
 fingerprint:
   __init__.py: bafybeig6ccpss2phq7uoj6jnco2xxh4rswtspxpxo3yk4papv7j4d2o5eu
-  behaviours.py: bafybeidntgux7ynv33o373yoaksdg6ssgiu5lhmiep7o7xtyqqdzgfzh2q
+  behaviours.py: bafybeievkx4oic3bfcgywlvw5dacw4t4akk4zffpne2ktfjlhud2yc2jba
   dialogues.py: bafybeie2nmx4aucby7fy6yl6rzroubybcltvj5qlhkizxlrm6rrk5hio4q
-  handlers.py: bafybeiax5mgcltn3zzl33muao4juh6devvgl362ozrc2kgg4uqfjdpdkau
+  handlers.py: bafybeia3umrkjmqtzrxaamposauhmn2hz4jbm4urzhrgtpvumkrvmgt7cq
   strategy.py: bafybeib3dqetmxxtqc7y3wxp7n47d5viqqjdpmvwrs4m2fiwqvb4ocdhr4
   tests/test_dialogues.py: bafybeicsgx4k2r3g4nw6rrt34mp2z4dj3ddzd3nljwf4yqzynwujccdpdq
 fingerprint_ignore_patterns: []
@@ -22,7 +22,7 @@ protocols:
 - valory/contract_api:1.0.0:bafybeib3abpck4a6a63vyymd2pdiwijdsqk43hrrxz734v5ghxje46pxgm
 - valory/ledger_api:1.0.0:bafybeidltb2fvcfokf7a2i3jnrf4kmmsn5bxmcrwdtbz2nrrzhpj4dlzwe
 skills:
-- eightballer/prometheus:0.1.0:bafybeid3wfmcdwagudn6xnc32blf2vgtxc35ymricoz3jqvonzv3i66eii
+- eightballer/prometheus:0.1.0:bafybeif4evjhwa3ac5bdojqs2gi7pvr6evnnwml2gsopktdnc6fx3vr5tu
 behaviours:
   balance_polling_behaviour:
     args:

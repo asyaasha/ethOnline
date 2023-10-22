@@ -220,3 +220,5 @@ class BalanceMetricsStrategy(Model):
         self.context.logger.info("Balance metrics strategy initialized.")
         self.context.logger.info(f"Ledgers: {self.ledgers}")
         self.context.logger.info(f"Tokens: {self.tokens}")
+        self.context.shared_state["ledgers"] = self.ledgers
+        self.context.shared_state["native_balances"] = self.native_balances
