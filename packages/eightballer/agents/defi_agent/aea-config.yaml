@@ -38,21 +38,6 @@ dependencies:
   open-aea-ledger-ethereum: {}
 default_connection: null
 ---
-public_id: valory/ledger:0.19.0
-type: connection
-config:
-  ledger_apis:
-    matic:
-      address: ${str:https://rpc.ankr.com/polygon}
-      chain_id: ${int:137}
-      poa_chain: ${bool:false}
-      default_gas_price_strategy: ${str:eip1559}
-    ethereum:
-      address: ${str:https://rpc.mevblocker.io}
-      chain_id: ${int:1}
-      poa_chain: ${bool:false}
-      default_gas_price_strategy: ${str:eip1559}
----
 public_id: eightballer/balance_metrics:0.1.0:bafybeifrzxs3gbetwhc5kgvfq3tri7wfx6gzo5fdlfdfycmbrrynkp6a5q
 type: skill
 models:

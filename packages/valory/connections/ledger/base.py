@@ -181,8 +181,6 @@ class RequestDispatcher(ABC):
             )
         performative = message.performative
         handler = self.get_handler(performative)
-        if performative == LedgerApiMessage.Performative.GET_RAW_TRANSACTION:
-            return self.loop.create_task(handler(api, message, dialogue))
         return self.loop.create_task(self.run_async(handler, api, message, dialogue))
 
     def get_handler(self, performative: Any) -> Callable[[Any], Task]:

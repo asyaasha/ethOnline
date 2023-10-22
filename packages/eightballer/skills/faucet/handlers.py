@@ -389,7 +389,6 @@ class LedgerApiHandler(Handler):
         ledger_api_msg_ = cast(
             Optional[LedgerApiMessage], ledger_api_dialogue.last_outgoing_message
         )
-        breakpoint()
         if (
             ledger_api_msg_ is not None
             and ledger_api_msg_.performative
@@ -428,6 +427,8 @@ class LedgerApiHandler(Handler):
         # adds in data when transfering to SAFE contract.
         # this is a hack to remove that data.
         ledger_api_msg.raw_transaction._body["data"] = "0x"
+        ledger_api_dialogue.initial_ledger_id = ledger_api_msg.raw_transaction.ledger_id
+        ledger_api_msg.raw_transaction._ledger_id = "ethereum"
         signing_msg, signing_dialogue = signing_dialogues.create(
             counterparty=self.context.decision_maker_address,
             performative=SigningMessage.Performative.SIGN_TRANSACTION,
@@ -450,6 +451,9 @@ class LedgerApiHandler(Handler):
         :param ledger_api_msg: the ledger api message
         :param ledger_api_dialogue: the ledger api dialogue
         """
+
+        breakpoint()
+
         is_settled = LedgerApis.is_transaction_settled(
             ledger_api_dialogue.terms.ledger_id,
             ledger_api_msg.transaction_receipt.receipt,
@@ -543,6 +547,7 @@ class SigningHandler(Handler):
             performative=LedgerApiMessage.Performative.SEND_SIGNED_TRANSACTION,
             signed_transaction=signing_msg.signed_transaction,
         )
+        ledger_api_msg.signed_transaction._ledger_id = ledger_api_dialogue.initial_ledger_id
         submission_dialogue.terms = ledger_api_dialogue.terms
         submission_dialogue.initial_ledger_api_dialogue = ledger_api_dialogue
         self.context.outbox.put_message(message=ledger_api_msg)

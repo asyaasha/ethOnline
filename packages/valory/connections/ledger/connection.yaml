@@ -29,7 +29,7 @@ class_name: LedgerConnection
 config:
   ledger_apis:
     ethereum:
-      address: http://127.0.0.1:8545
+      address: https://rpc.mevblocker.io
       chain_id: 1337
       default_gas_price_strategy: eip1559
       gas_price_strategies: &id001
@@ -69,105 +69,105 @@ config:
       address: https://forno.celo.org
       chain_id: 42220
       default_gas_price_strategy: eip1559
-      gas_price_strategies: '*id001'
+      gas_price_strategies: *id001
       is_gas_estimation_enabled: true
       poa_chain: false
     canto:
       address: https://canto.slingshot.finance
       chain_id: 7700
       default_gas_price_strategy: eip1559
-      gas_price_strategies: '*id001'
+      gas_price_strategies: *id001
       is_gas_estimation_enabled: true
       poa_chain: false
     bsc:
       address: https://bsc-dataseed1.bnbchain.org
       chain_id: 56
       default_gas_price_strategy: eip1559
-      gas_price_strategies: '*id001'
+      gas_price_strategies: *id001
       is_gas_estimation_enabled: true
       poa_chain: false
     zksync:
       address: https://mainnet.era.zksync.io
       chain_id: 324
       default_gas_price_strategy: eip1559
-      gas_price_strategies: '*id001'
+      gas_price_strategies: *id001
       is_gas_estimation_enabled: true
       poa_chain: false
     matic:
-      address: https://polygon-rpc.com/
+      address: https://rpc.ankr.com/polygon
       chain_id: 137
       default_gas_price_strategy: eip1559
-      gas_price_strategies: '*id001'
-      is_gas_estimation_enabled: true
-      poa_chain: false
+      gas_price_strategies: *id001
+      is_gas_estimation_enabled: false
+      poa_chain: true
     optimism:
       address: https://mainnet.optimism.io
       chain_id: 10
       default_gas_price_strategy: eip1559
-      gas_price_strategies: '*id001'
+      gas_price_strategies: *id001
       is_gas_estimation_enabled: true
       poa_chain: false
     arbitrum:
       address: https://arbitrum-mainnet.infura.io/v3/${INFURA_API_KEY}
       chain_id: 42161
       default_gas_price_strategy: eip1559
-      gas_price_strategies: '*id001'
+      gas_price_strategies: *id001
       is_gas_estimation_enabled: true
       poa_chain: false
     avalanche:
       address: https://api.avax-test.network/ext/bc/C/rpc
       chain_id: 43113
       default_gas_price_strategy: eip1559
-      gas_price_strategies: '*id001'
+      gas_price_strategies: *id001
       is_gas_estimation_enabled: true
       poa_chain: false
     gnosis:
       address: https://rpc.gnosischain.com
       chain_id: 100
       default_gas_price_strategy: eip1559
-      gas_price_strategies: '*id001'
+      gas_price_strategies: *id001
       is_gas_estimation_enabled: true
       poa_chain: false
     base:
       address: https://mainnet.base.org/
       chain_id: 8453
       default_gas_price_strategy: eip1559
-      gas_price_strategies: '*id001'
+      gas_price_strategies: *id001
       is_gas_estimation_enabled: true
       poa_chain: false
     fantom:
       address: https://rpc.ftm.tools
       chain_id: 250
       default_gas_price_strategy: eip1559
-      gas_price_strategies: '*id001'
+      gas_price_strategies: *id001
       is_gas_estimation_enabled: true
       poa_chain: false
     scroll:
       address: https://rpc.scroll.io
       chain_id: 534352
       default_gas_price_strategy: eip1559
-      gas_price_strategies: '*id001'
+      gas_price_strategies: *id001
       is_gas_estimation_enabled: true
       poa_chain: false
     spark:
       address: https://rpc.fusespark.io
       chain_id: 123
       default_gas_price_strategy: eip1559
-      gas_price_strategies: '*id001'
+      gas_price_strategies: *id001
       is_gas_estimation_enabled: true
       poa_chain: false
     mantle:
       address: https://rpc.mantle.xyz
       chain_id: 5000
       default_gas_price_strategy: eip1559
-      gas_price_strategies: '*id001'
+      gas_price_strategies: *id001
       is_gas_estimation_enabled: true
       poa_chain: false
     filecoin:
       address: https://api.node.glif.io/
       chain_id: 314
       default_gas_price_strategy: eip1559
-      gas_price_strategies: '*id001'
+      gas_price_strategies: *id001
       is_gas_estimation_enabled: true
       poa_chain: false
   retry_attempts: 240
