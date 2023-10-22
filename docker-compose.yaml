@@ -37,6 +37,8 @@ services:
       - POSTGRES_HOST=${POSTGRES_HOST}
       - GF_SECURITY_ALLOW_EMBEDDING=true 
       - GF_FEATURE_TOGGLES_ENABLE=publicDashboards
+      # we ensure that the pub url is displatyed as the host ip
+      - GF_SERVER_ROOT_URL=http://${HOST_IP:-0.0.0.0}:${GRAFANA_PORT:-26658}
     volumes:
       - ./data/grafana:/var/lib/grafana  
       - ./grafana-provisioning:/etc/grafana/provisioning

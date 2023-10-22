@@ -1,5 +1,5 @@
 <script>
-	const GRAFANA_URL = 'http://localhost:26658/public-dashboards/b9242c12e1354ec2992018c3085e3544'
+	const GRAFANA_URL = ''
 
 	$: bgImage = `
     background-image: url("/bg.png");
