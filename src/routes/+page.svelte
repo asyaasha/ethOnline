@@ -1,5 +1,5 @@
 <script>
-	const GRAFANA_URL = 'http://localhost:26658/public-dashboards/04a1eea4e60d405c88594ca10aecdce5';
+	const GRAFANA_URL = 'http://localhost:26658/public-dashboards/b9242c12e1354ec2992018c3085e3544'
 
 	$: bgImage = `
     background-image: url("/bg.png");
@@ -13,7 +13,7 @@
 </script>
 
 <div class="container">
-	<iframe title="All Balances" src={GRAFANA_URL} width="850" height="700" frameborder="0" />
+	<iframe title="All Balances" src={GRAFANA_URL} width="1150" height="1700" frameborder="0" />
 </div>
 
 <style>

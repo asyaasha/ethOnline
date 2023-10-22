@@ -14,10 +14,10 @@ clean-build:
 	find . -name '*.egg-info' -exec rm -fr {} +
 	find . -name '*.egg' -exec rm -fr {} +
 	find . -name '*.svn' -exec rm -fr {} +
-	find . -name '*.db' -exec rm -fr {} +
+	find -name '*.db' -exec rm -fr {} + packages
 	rm -fr .idea .history
 	rm -fr venv
-	rm -rf tmp 
+	rm -rf packages/tmp 
 	rm -rf packages/eightballer/agents/agent
 	rm -rf agent
 
