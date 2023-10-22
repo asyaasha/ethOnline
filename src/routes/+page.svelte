@@ -1,31 +1,24 @@
 <script>
+	const GRAFANA_URL = 'http://localhost:26658/public-dashboards/04a1eea4e60d405c88594ca10aecdce5';
+
+	$: bgImage = `
+    background-image: url("/bg.png");
+    background-size: cover;
+    background-position: center;
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;`;
 </script>
 
-<svelte:head>
-	<title>Home</title>
-	<meta name="description" content="app" />
-</svelte:head>
-
-<section />
+<div class="container">
+	<iframe title="All Balances" src={GRAFANA_URL} width="850" height="700" frameborder="0" />
+</div>
 
 <style>
-	section {
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		align-items: center;
-		flex: 0.6;
-	}
-
-	h1 {
-		width: 100%;
-	}
-
-	.welcome {
-		display: block;
-		position: relative;
-		width: 100%;
-		height: 0;
-		padding: 0 0 calc(100% * 495 / 2048) 0;
+	.container {
+		margin-top: 10px;
+		margin-left: 80px;
 	}
 </style>
