@@ -1,0 +1,76 @@
+{
+	"data": [
+		{
+			"Ledger": {
+				"ledger_id": "ethereum",
+				"chain_id": "1",
+				"chain_name": "Ethereum",
+				"explorer_url": "https://etherscan.io/",
+				"native_currency": "ETH"
+			}
+		},
+		{
+			"Ledger": {
+				"ledger_id": "filecoin",
+				"chain_id": "314",
+				"chain_name": "Filecoin",
+				"explorer_url": "",
+				"native_currency": ""
+			}
+		},
+		{
+			"Ledger": {
+				"ledger_id": "fantom",
+				"chain_id": "250",
+				"chain_name": "Fantom Opera",
+				"explorer_url": "https://ftmscan.com/",
+				"native_currency": "FTM"
+			}
+		},
+		{
+			"Ledger": {
+				"ledger_id": "avalanche",
+				"chain_id": "43114",
+				"chain_name": "Avalanche C-Chain",
+				"explorer_url": "https://cchain.explorer.avax.network/",
+				"native_currency": "AVAX"
+			}
+		},
+		{
+			"Ledger": {
+				"ledger_id": "polygon",
+				"chain_id": "137",
+				"chain_name": "Polygon (Matic)",
+				"explorer_url": "https://polygonscan.com/",
+				"native_currency": "MATIC"
+			}
+		},
+		{
+			"Ledger": {
+				"ledger_id": "scroll",
+				"chain_id": "",
+				"chain_name": "Scroll",
+				"explorer_url": "",
+				"native_currency": "SCRL"
+			}
+		},
+		{
+			"Ledger": {
+				"ledger_id": "mantle",
+				"chain_id": "",
+				"chain_name": "Mantle",
+				"explorer_url": "",
+				"native_currency": ""
+			}
+		},
+		{
+			"Ledger": {
+				"ledger_id": "axelar",
+				"chain_id": "",
+				"chain_name": "Axelar",
+				"explorer_url": "",
+				"native_currency": "AXL"
+			}
+		}
+	]
+}
