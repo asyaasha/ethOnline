@@ -3,7 +3,9 @@
         "skill/eightballer/balance_metrics/0.1.0": "bafybeigjlb7tdf7gl7pviqx2by3g5c673z2j42kazuqbb6rdfllmhoqj2y",
         "connection/valory/ledger/0.19.0": "bafybeihtho6skcdtmfzy3ho5tf3wqemzojphzgupqj52cz2z2fpxycou2y",
         "agent/eightballer/defi_agent/0.1.0": "bafybeian2uke4q6os22nv3xfllsnfjbnvv6da3dlbpwrz65ytogw7z3bzq",
-        "skill/eightballer/faucet/0.1.0": "bafybeicaptnlvejgroiswg2ch4k2fk4qh6hicafzy7dpqe5j6pcuba4fdi",
+        "skill/eightballer/faucet/0.1.0": "bafybeicaptnlvejgroiswg2ch4k2fk4qh6hicafzy7dpqe5j6pcuba4fdi"
+    },
+    "third_party": {
         "protocol/eightballer/prometheus/1.0.0": "bafybeidg56u4eza6z3pqkpcqw5cvobjar6azi5yko4joaosb2ev5buqrdq",
         "connection/eightballer/prometheus/0.1.1": "bafybeibc5x4ldgtl7jrgz4vjtbm3o6bf2zeyfsa47vftbpeszotl3x2knm",
         "protocol/eightballer/http/0.1.0": "bafybeibels7dv7ucflaeniwifbisvkegm5vrarrr5ctkcqebg4t7onba6a",
@@ -18,6 +20,5 @@
         "protocol/eightballer/default/0.1.0": "bafybeicj23oli6dvzj22sfvtfc46duqzvbpis5yskq5f5t55qikvwjtfme",
         "protocol/eightballer/fipa/0.1.0": "bafybeief7f7xh6lgqiqtk333jwdec7occpvlalankbwvrhndxupt44brja",
         "connection/eightballer/http_client/0.1.0": "bafybeifn24kz3rv2myfxvz2jisiz6p76f7kgxwuibggkmxbvpv74thensq"
-    },
-    "third_party": {}
+    }
 }
