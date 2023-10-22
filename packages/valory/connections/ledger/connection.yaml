@@ -13,7 +13,9 @@ fingerprint:
   chains.json: bafybeicyksh6oin4an6quxu4baeieezzx6f4dcsyvxenxhhq5vt4usjyzi
   connection.py: bafybeihp4ehnz2vasdwtqdy6y45w3mmd2krnpks6cexfe254gtuesqntcq
   contract_dispatcher.py: bafybeihqcbyg22tn6ilyweboij5c67sa5bntq7b7mmkwfzwyplnwrle5ha
+  data.json: bafybeifp5jaxxpxatr7serzpuzxh253do4hfarmcm27kb6l7leczqvgaqq
   evm_chains.py: bafybeigfp6dvfmixpxgp67icwvjlq7zfpsgfqspqnmtgzer4igzn3scwjq
+  extraRpcs.js: bafybeicnwcaow2fg7itus72qmr5cqlkrwb5slkwrk5sjn7yhiz56jbxsum
   ledger_dispatcher.py: bafybeidu42oqdhphs5od64ndlgfhvlqyutq4vuck3yky7x3xxvd6dwxuvu
   tests/__init__.py: bafybeifku7ttsmbj4gfx6dkgjvwypx7v5ysfqlzof6vh4p7gujakjtuwhe
   tests/conftest.py: bafybeiaphuaf24lyskiz7fzg4ef5upet7djpmyqfir6hqpnwmvqnawqt6u
