@@ -61,10 +61,4 @@ all: fmt lint test hashes
 run_agent:
 	 bash scripts/run_single_agent.sh eightballer/defi_agent
 
-pull:
-	git checkout main
-	rm -rf packages
-	git pull
-	git checkout packages
-	poetry run autonomy packages sync
 	
