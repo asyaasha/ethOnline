@@ -131,6 +131,8 @@ class HttpHandler(Handler):
             self._handle_pre_flight(http_msg, http_dialogue)
         elif http_msg.url.find("ledgers") and http_msg.method == "get":
             self._return_ledgers(http_msg, http_dialogue)
+        elif http_msg.url.find("whitelist") and http_msg.method == "get":
+            self._return_whitelist(http_msg, http_dialogue)
         else:
             self._handle_invalid(http_msg, http_dialogue)
 
@@ -153,6 +155,27 @@ class HttpHandler(Handler):
             status_text="",
             headers=http_msg.headers,
             body=json.dumps({"ledgers": {i: asdict(k) for i, k in ledgers.items()}}).encode("utf-8"),
+        )
+        self.context.outbox.put_message(message=http_response)
+
+    def _return_whitelist(
+        self, http_msg: HttpMessage, http_dialogue: HttpDialogue
+    ) -> None:
+        """
+        Handle a Http request of verb GET.
+
+        :param http_msg: the http message
+        :param http_dialogue: the http dialogue
+        """
+        whitelist = self.context.strategy.allow_list
+        http_response = http_dialogue.reply(
+            performative=HttpMessage.Performative.RESPONSE,
+            target_message=http_msg,
+            version=http_msg.version,
+            status_code=200,
+            status_text="",
+            headers=http_msg.headers,
+            body=json.dumps(whitelist).encode("utf-8"),
         )
         self.context.outbox.put_message(message=http_response)
 

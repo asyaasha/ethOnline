@@ -10,7 +10,7 @@ cd agent
 # create and add a new ethereum key
 # aea -s generate-key ethereum && aea -s add-key ethereum
 
-echo -n $EVM_KEY > ethereum_private_key.txt
+cp ../ethereum_private_key.txt ethereum_private_key.txt
 
 aea -s add-key ethereum
 # install any agent deps
