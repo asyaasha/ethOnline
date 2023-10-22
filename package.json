@@ -35,6 +35,7 @@
 	"type": "module",
 	"dependencies": {
 		"@floating-ui/dom": "^1.5.3",
+		"@sismo-core/sismo-connect-client": "^0.0.23",
 		"@wagmi/core": "^1.4.5",
 		"@web3modal/wagmi": "^3.1.0"
 	}

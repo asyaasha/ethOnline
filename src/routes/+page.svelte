@@ -1,5 +1,5 @@
 <script>
-	const GRAFANA_URL = ''
+	const GRAFANA_URL = '';
 
 	$: bgImage = `
     background-image: url("/bg.png");
