@@ -1,28 +1,14 @@
 <script>
-	import { onMount } from 'svelte';
-	import { getChains } from '$lib/actions/getChains';
-	import { postClaim } from '$lib/actions/postClaim';
-	/**
-	 * @type {any[]}
-	 */
-	let options = [];
 	export let selected = '';
-
-	onMount(() => {
-		async function main() {
-			const response = await getChains();
-			const data = await response?.json();
-			options = data?.data;
-		}
-
-		main();
-	});
-	$: console.log(selected);
+	/**
+	 * @type {any}
+	 */
+	export let data;
 </script>
 
 <select bind:value={selected}>
 	<option value="" disabled selected>Select Ledger..</option>
-	{#each options as option (option)}
+	{#each data as option (option)}
 		<option value={option}>{option.chain_name}</option>
 	{/each}
 </select>
