@@ -35,9 +35,11 @@ from packages.valory.protocols.contract_api.message import ContractApiMessage
 from packages.valory.protocols.ledger_api.message import LedgerApiMessage
 
 from packages.eightballer.skills.prometheus.handlers import PrometheusHandler as BasePrometheusHandler
+from packages.eightballer.skills.prometheus.handlers import HttpHandler as BaseHttpHandler
 
 
 PrometheusHandler = BasePrometheusHandler
+HttpHandler = BaseHttpHandler
 
 
 class ContractApiHandler(Handler):
@@ -167,12 +169,12 @@ class LedgerApiHandler(Handler):
         if ledger_api_msg.performative is LedgerApiMessage.Performative.BALANCE:
             ledger = strategy.ledgers.get(ledger_api_msg.ledger_id)
             current_balance = strategy.native_balances.get(ledger)
-            if ledger_api_msg.balance != current_balance.amount:
-                current_balance.amount = ledger_api_msg.balance
-                strategy.native_balances[ledger] = current_balance
-                self.context.logger.info(
-                    f"New Balance on {ledger.chain_name} is {current_balance}"
-                )
+            current_balance.amount = ledger_api_msg.balance
+            strategy.native_balances[ledger] = current_balance
+            self.context.shared_state["native_balances"] = {i.ledger_id: i for i in strategy.native_balances}
+            self.context.logger.debug(
+                f"New Balance on {ledger.chain_name} is {current_balance}"
+            )
         elif (
             ledger_api_msg.performative
             is LedgerApiMessage.Performative.TRANSACTION_DIGEST
