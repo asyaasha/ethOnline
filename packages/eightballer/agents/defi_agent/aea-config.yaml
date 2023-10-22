@@ -7,9 +7,9 @@ aea_version: '>=1.35.0, <2.0.0'
 fingerprint: {}
 fingerprint_ignore_patterns: []
 connections:
-- eightballer/prometheus:0.1.1:bafybeibc5x4ldgtl7jrgz4vjtbm3o6bf2zeyfsa47vftbpeszotl3x2knm
-- eightballer/http_server:0.1.0:bafybeifvztshvoeie6mghz23z75he4jns2bs3p64l4rb2tf5ausevcuti4
 - eightballer/http_client:0.1.0:bafybeifn24kz3rv2myfxvz2jisiz6p76f7kgxwuibggkmxbvpv74thensq
+- eightballer/http_server:0.1.0:bafybeifvztshvoeie6mghz23z75he4jns2bs3p64l4rb2tf5ausevcuti4
+- eightballer/prometheus:0.1.1:bafybeibc5x4ldgtl7jrgz4vjtbm3o6bf2zeyfsa47vftbpeszotl3x2knm
 - valory/ledger:0.19.0:bafybeihtho6skcdtmfzy3ho5tf3wqemzojphzgupqj52cz2z2fpxycou2y
 contracts:
 - eightballer/erc_20:0.1.0:bafybeihzyver74cyqzngkzicirjnrphg464hzsyflngosrda7ickmvapzi
