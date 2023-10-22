@@ -19,6 +19,23 @@
 	import LedgerSelect from '$lib/components/LedgerSelect.svelte';
 	import AddressSelect from '$lib/components/AddressSelect.svelte';
 	import { getWeb3Details } from '$lib/utils';
+	import { onMount } from 'svelte';
+	import { AuthType, SismoConnect } from '@sismo-core/sismo-connect-client';
+
+	const config = {
+		appId: '0xeec97b4773c0d5e387718eaf5ab6b6af'
+	};
+
+	const sismoConnect = SismoConnect({
+		config
+	});
+
+	// auth request for a proof of Twitter account ownership
+	const twitterRequest = {
+		authType: AuthType.TWITTER
+	};
+
+	onMount(() => {});
 
 	const chains = [
 		mainnet,
@@ -48,6 +65,12 @@
 		placement: 'top'
 	};
 
+	const sismoHover = {
+		event: 'hover',
+		target: 'sismoHover',
+		placement: 'top'
+	};
+
 	/**
 	 * @type {any}
 	 */
@@ -64,6 +87,11 @@
 	/**
 	 * @type {any}
 	 */
+	$: sismo = {};
+
+	/**
+	 * @type {any}
+	 */
 	export let data;
 
 	const { account } = getWeb3Details();
@@ -72,14 +100,30 @@
 			resMsg = '';
 		}, 5000);
 	}
+
+	function handleSismo() {
+		sismoConnect.request({
+			claims: [{ groupId: '0x8884b2516b733c4e1c1525c550694b15' }],
+			namespace: 'sismo-edition'
+		});
+	}
+
+	onMount(() => {
+		sismo = sismoConnect.getResponse();
+		console.log(sismo);
+		console.log(sismo?.proofs);
+	});
 </script>
 
 <div class="sidebar">
 	<div class="flex pt-4 header">
 		<img class="logo" src="/logo4.png" alt="logo" />
 		<div class="title">
-			<div>HYDRATION</div>
+			<div>FAUCETATION</div>
 			<div>STATION</div>
+		</div>
+		<div class="pl-10 connect-btn">
+			<w3m-button label="Connect" />
 		</div>
 	</div>
 	<div class="content">
@@ -92,80 +136,76 @@
 
 		<div>
 			<div class="px-2 mb-4">
-				{#if !account?.address}
-					<div class="pl-4">
-						<w3m-button label="Connect to Claim" />
-					</div>
-				{:else}
-					<form
-						method="POST"
-						action="/claim?/postClaim"
-						use:enhance={() => {
-							return async ({ result, update }) => {
-								/**
-								 * @type {any}
-								 */
-								let res = result;
-								loading = true;
+				<form
+					method="POST"
+					action="/claim?/postClaim"
+					use:enhance={() => {
+						return async ({ result, update }) => {
+							/**
+							 * @type {any}
+							 */
+							let res = result;
+							loading = true;
 
-								resMsg = res?.data?.result;
-								await applyAction(result); // manually call applyAction to update `page.form`
-								await update();
-								loading = false;
-							};
-						}}
-					>
-						<input type="hidden" name="ledger_id" value={selectedChain?.ledger_id} />
-						<TabGroup>
-							<Tab bind:group={tabSet} name="tab1" value={0}>
-								<span>Whitelisted</span>
-							</Tab>
-							<Tab bind:group={tabSet} name="tab2" value={1}>Custom Address</Tab>
-							<!-- Tab Panels --->
-							<svelte:fragment slot="panel">
-								{#if tabSet === 0}
-									<div class="mb-4 w-full tab">
-										<input
-											type="hidden"
-											name="address"
-											value={selectedAddress}
-											placeholder="Select from whitelisted.."
-										/>
-										<AddressSelect bind:selected={selectedAddress} data={data?.whitelisted || []} />
-									</div>
-								{:else}
-									<div class="mb-4 w-full tab">
-										<input
-											class="mb-4 w-full address"
-											name="address"
-											placeholder="Enter address.."
-										/>
-									</div>
-								{/if}
-							</svelte:fragment>
-						</TabGroup>
+							resMsg = res?.data?.result;
+							await applyAction(result); // manually call applyAction to update `page.form`
+							await update();
+							loading = false;
+						};
+					}}
+				>
+					<input type="hidden" name="ledger_id" value={selectedChain?.ledger_id} />
+					<TabGroup>
+						<Tab bind:group={tabSet} name="tab1" value={0}>
+							<span>Whitelisted</span>
+						</Tab>
+						<Tab bind:group={tabSet} name="tab2" value={1}>Custom Address</Tab>
+						<!-- Tab Panels --->
+						<svelte:fragment slot="panel">
+							{#if tabSet === 0}
+								<div class="mb-4 w-full tab">
+									<input
+										type="hidden"
+										name="address"
+										value={selectedAddress}
+										placeholder="Select from whitelisted.."
+									/>
+									<AddressSelect bind:selected={selectedAddress} data={data?.whitelisted || []} />
+								</div>
+							{:else}
+								<div class="mb-4 w-full tab">
+									<input class="mb-4 w-full address" name="address" placeholder="Enter address.." />
+								</div>
+							{/if}
+						</svelte:fragment>
+					</TabGroup>
+					{#if sismo?.proofs?.length}
 						<button use:popup={popupHover} type="submit" class="btn variant-ghost-secondary w-full"
 							>Claim</button
 						>
-						{#if loading}
-							<div class="pt-2 status">Loading...</div>
-						{/if}
-						{#if resMsg}
-							<div class="pt-2 status">{resMsg}</div>
-						{/if}
-					</form>
+					{/if}
+					{#if loading}
+						<div class="pt-2 status">Loading...</div>
+					{/if}
+					{#if resMsg}
+						<div class="pt-2 status">{resMsg}</div>
+					{/if}
+				</form>
+				{#if !sismo?.proofs?.length}
+					<button use:popup={sismoHover} class="btn variant-ghost-secondary" on:click={handleSismo}
+						>Sismo</button
+					>
 				{/if}
 			</div>
 			<img class="faucet-img" src="/faucet2.png" alt="faucet" />
-			{#if account?.address}
-				<div class="pl-10">
-					<w3m-button label="Connect to Claim" />
-				</div>
-			{/if}
 		</div>
 	</div>
 	<div class="card p-4 variant-filled-secondary" data-popup="popupHover">
 		<p>Select a ledger to claim tokens from a faucet</p>
+		<div class="arrow variant-filled-secondary" />
+	</div>
+	<div class="card p-4 variant-filled-secondary" data-popup="sismoHover">
+		<p>Validate the ownership of Olas with Sismo</p>
 		<div class="arrow variant-filled-secondary" />
 	</div>
 </div>
@@ -230,5 +270,9 @@
 		width: 40px;
 		height: 35px;
 		margin: 0 7px;
+	}
+
+	.connect-btn {
+		width: 200px;
 	}
 </style>
