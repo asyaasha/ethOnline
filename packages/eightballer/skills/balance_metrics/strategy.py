@@ -34,6 +34,7 @@ class Ledger:
     chain_id: int
     chain_name: str
     explorer_url: str
+    native_currency: str
 
     def __hash__(self) -> int:
         """
@@ -48,48 +49,84 @@ LEDGERS = [
         chain_id=1,
         chain_name="Ethereum",
         explorer_url="https://etherscan.io/",
+        native_currency="ETH",
     ),
     Ledger(
         ledger_id="kovan",
         chain_id=42,
         chain_name="Kovan",
         explorer_url="https://kovan.etherscan.io/",
+        native_currency="ETH",
     ),
     Ledger(
         ledger_id="binance",
         chain_id=56,
         chain_name="Binance",
         explorer_url="https://bscscan.com/",
+        native_currency="BNB",
     ),
     Ledger(
         ledger_id="gnosis",
         chain_id=100,
         chain_name="Gnosis",
         explorer_url="https://gnosisscan.io/",
+        native_currency="XDAI",
     ),
     Ledger(
         ledger_id="matic",
         chain_id=137,
         chain_name="Matic",
         explorer_url="https://polygonscan.com/",
+        native_currency="MATIC",
     ),
     Ledger(
         ledger_id="fantom",
         chain_id=250,
         chain_name="Fantom",
         explorer_url="https://ftmscan.com/",
+        native_currency="FTM",
     ),
     Ledger(
         ledger_id="arbitrum",
         chain_id=42161,
         chain_name="Arbitrum",
         explorer_url="https://arbiscan.io/",
+        native_currency="ETH",
     ),
     Ledger(
         ledger_id="avalanche",
         chain_id=43114,
         chain_name="Avalanche",
         explorer_url="https://cchain.explorer.avax.network/",
+        native_currency="AVAX",
+    ),
+    Ledger(
+        ledger_id="filecoin",
+        chain_id=314,
+        chain_name="Filecoin",
+        explorer_url="https://filscan.io/",
+        native_currency="FIL",
+    ),
+    Ledger(
+        ledger_id="mantle",
+        chain_id=5000,
+        chain_name="Mantle",
+        explorer_url="https://mantle.finance/",
+        native_currency="MANTLE",
+    ),
+    Ledger(
+        ledger_id="scroll",
+        chain_id=534352,
+        chain_name="Scroll",
+        explorer_url="https://scrollscan.io/",
+        native_currency="SCRL",
+    ),
+    Ledger(
+        ledger_id="spark",
+        chain_id=123,
+        chain_name="Spark",
+        explorer_url="https://sparkscan.io/",
+        native_currency="SPARK",
     ),
 ]
 
