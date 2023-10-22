@@ -1,9 +1,9 @@
 {
     "dev": {
-        "skill/eightballer/balance_metrics/0.1.0": "bafybeigjlb7tdf7gl7pviqx2by3g5c673z2j42kazuqbb6rdfllmhoqj2y",
-        "connection/valory/ledger/0.19.0": "bafybeihtho6skcdtmfzy3ho5tf3wqemzojphzgupqj52cz2z2fpxycou2y",
-        "agent/eightballer/defi_agent/0.1.0": "bafybeia5f7gt44loqh2amlsjv4w7ew2dtumo5x35z76szn5kijy57aqaqa",
-        "skill/eightballer/faucet/0.1.0": "bafybeiafhlgmbcxd3b7urs5cvokuuiqd3l452n3rstsbumj6h3uhe2fgqy"
+        "skill/eightballer/balance_metrics/0.1.0": "bafybeiegwwkk7nrb3jvbqhb7xy2sbqvu5hdsm6oaeymooqhph6chcjrfme",
+        "connection/valory/ledger/0.19.0": "bafybeielntqysjvhnbfpufisxdftj4mixujfahyhdqc4p7kilw5yexsxaq",
+        "agent/eightballer/defi_agent/0.1.0": "bafybeicgtm37uk4jqtxtn4ahltp2iybvlx4epde6bjvstsrrafiiiycuqe",
+        "skill/eightballer/faucet/0.1.0": "bafybeifhytnfm2rwxcc5pgoim5zpcvx2oqzqei5fyogjlvqss5i6b2nrdi"
     },
     "third_party": {
         "protocol/eightballer/prometheus/1.0.0": "bafybeidg56u4eza6z3pqkpcqw5cvobjar6azi5yko4joaosb2ev5buqrdq",

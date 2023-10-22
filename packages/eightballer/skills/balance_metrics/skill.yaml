@@ -15,7 +15,7 @@ fingerprint:
   tests/test_dialogues.py: bafybeicsgx4k2r3g4nw6rrt34mp2z4dj3ddzd3nljwf4yqzynwujccdpdq
 fingerprint_ignore_patterns: []
 connections:
-- valory/ledger:0.19.0:bafybeihtho6skcdtmfzy3ho5tf3wqemzojphzgupqj52cz2z2fpxycou2y
+- valory/ledger:0.19.0:bafybeielntqysjvhnbfpufisxdftj4mixujfahyhdqc4p7kilw5yexsxaq
 contracts:
 - eightballer/erc_20:0.1.0:bafybeihzyver74cyqzngkzicirjnrphg464hzsyflngosrda7ickmvapzi
 protocols:

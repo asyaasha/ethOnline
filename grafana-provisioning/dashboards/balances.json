@@ -18,7 +18,6 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "id": 1,
   "links": [],
   "liveNow": false,
   "panels": [
@@ -78,7 +77,35 @@
             ]
           }
         },
-        "overrides": []
+        "overrides": [
+          {
+            "__systemRef": "hideSeriesFrom",
+            "matcher": {
+              "id": "byNames",
+              "options": {
+                "mode": "exclude",
+                "names": [
+                  "{__name__=\"ethereum_native_balance\", agent_address=\"0x5206Cb0140B3a3C12833e12235d1654Ceec02C94\", instance=\"host.docker.internal:8888\", job=\"dev_agent_1\", ledger=\"Ethereum\"}",
+                  "{__name__=\"matic_native_balance\", agent_address=\"0x5206Cb0140B3a3C12833e12235d1654Ceec02C94\", instance=\"host.docker.internal:8888\", job=\"dev_agent_1\", ledger=\"Matic\"}",
+                  "{__name__=\"gnosis_native_balance\", agent_address=\"0x5206Cb0140B3a3C12833e12235d1654Ceec02C94\", instance=\"host.docker.internal:8888\", job=\"dev_agent_1\", ledger=\"Gnosis\"}",
+                  "{__name__=\"filecoin_native_balance\", agent_address=\"0x5206Cb0140B3a3C12833e12235d1654Ceec02C94\", instance=\"host.docker.internal:8888\", job=\"dev_agent_1\", ledger=\"Filecoin\"}"
+                ],
+                "prefix": "All except:",
+                "readOnly": true
+              }
+            },
+            "properties": [
+              {
+                "id": "custom.hideFrom",
+                "value": {
+                  "legend": false,
+                  "tooltip": false,
+                  "viz": true
+                }
+              }
+            ]
+          }
+        ]
       },
       "gridPos": {
         "h": 20,
@@ -413,7 +440,7 @@
       "type": "timeseries"
     }
   ],
-  "refresh": "",
+  "refresh": "10s",
   "schemaVersion": 38,
   "style": "dark",
   "tags": [],
@@ -421,13 +448,13 @@
     "list": []
   },
   "time": {
-    "from": "now-15m",
+    "from": "now-5m",
     "to": "now"
   },
   "timepicker": {},
   "timezone": "",
   "title": "Agent Balances",
   "uid": "cd8ec0ac-a6a7-40bb-ae3d-8a6ca1a512b2",
-  "version": 2,
+  "version": 1,
   "weekStart": ""
 }

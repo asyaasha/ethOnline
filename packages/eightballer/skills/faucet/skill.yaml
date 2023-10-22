@@ -18,7 +18,7 @@ fingerprint:
   tests/test_base.py: bafybeifdxtgkxo7shk5apcwtfp6nbf6ik274cnbfmhnmiel3kqo2ok7iqa
 fingerprint_ignore_patterns: []
 connections:
-- valory/ledger:0.19.0:bafybeihtho6skcdtmfzy3ho5tf3wqemzojphzgupqj52cz2z2fpxycou2y
+- valory/ledger:0.19.0:bafybeielntqysjvhnbfpufisxdftj4mixujfahyhdqc4p7kilw5yexsxaq
 contracts: []
 protocols:
 - eightballer/default:0.1.0:bafybeicj23oli6dvzj22sfvtfc46duqzvbpis5yskq5f5t55qikvwjtfme
@@ -28,7 +28,7 @@ protocols:
 - valory/contract_api:1.0.0:bafybeib3abpck4a6a63vyymd2pdiwijdsqk43hrrxz734v5ghxje46pxgm
 - valory/ledger_api:1.0.0:bafybeidltb2fvcfokf7a2i3jnrf4kmmsn5bxmcrwdtbz2nrrzhpj4dlzwe
 skills:
-- eightballer/balance_metrics:0.1.0:bafybeigjlb7tdf7gl7pviqx2by3g5c673z2j42kazuqbb6rdfllmhoqj2y
+- eightballer/balance_metrics:0.1.0:bafybeiegwwkk7nrb3jvbqhb7xy2sbqvu5hdsm6oaeymooqhph6chcjrfme
 behaviours:
   balance_check:
     args: {}

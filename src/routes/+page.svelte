@@ -12,6 +12,13 @@
     left: 0;`;
 	let url = '';
 	$: inputUrl = url;
+
+    $: faucetAdddress = '0x5206Cb0140B3a3C12833e12235d1654Ceec02C94';
+    const txns = [];
+
+
+
+
 </script>
 
 
@@ -20,6 +27,9 @@
 	<div class="connected mt-2 ml-2">
 		Connected to: {inputUrl || GRAFANA_URL}
 	</div>
+	<div class="connected mt-2 ml-2">
+		Faucet Address: {faucetAdddress}
+    </div>
 </div>
 <div class="container">
 	<iframe
