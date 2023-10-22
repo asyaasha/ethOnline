@@ -47,8 +47,9 @@ clean-test:
 
 .PHONY: hashes
 hashes: clean
+	poetry run autonomy hash all
 	poetry run autonomy packages lock
-	poetry run adev -v -n 0 lint
+	poetry run autonomy push-all
 
 lint:
 	poetry run adev -v -n 0 lint -co
@@ -63,4 +64,12 @@ all: fmt lint test hashes
 
 run_agent: clean-build
 	 bash scripts/run_single_agent.sh eightballer/defi_agent
+
+pull_from_main:
+	git checkout main
+	rm -rf packages/eightballer 
+	rm -rf packages/valory
+	rm -rf packages/open_aea
+	git checkout packages
+	poetry run autonomy packages sync
 	

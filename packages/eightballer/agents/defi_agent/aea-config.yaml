@@ -72,7 +72,7 @@ models:
       max_requests_per_day: ${int:10}
       gwei_per_request: ${int:1}
       database_uri_string: ${str:sqlite:///faucet.db}
-      allow_list: ${list:["0xBa95718a52b5a3DBa749a7641712Dc05a3550d4f"]}
+      allow_list: ${list:["0xBa95718a52b5a3DBa749a7641712Dc05a3550d4f","0xa612b8aA84B7bAeF7fa01d1A6E961d567B7d87B3","0x92e4E69ea99c42337c3ea70a9B6aa1b6c91ba5E2"]}
       ban_list: ${list:[]}
 ---
 public_id: eightballer/http_server:0.1.0:bafybeia6shz5vnl5j7chaymvetrdrczdnca4huyy7djpgrptww2zaihliy
