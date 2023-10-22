@@ -8,14 +8,14 @@ license: Apache-2.0
 aea_version: '>=1.0.0, <2.0.0'
 fingerprint:
   __init__.py: bafybeig6ccpss2phq7uoj6jnco2xxh4rswtspxpxo3yk4papv7j4d2o5eu
-  behaviours.py: bafybeievkx4oic3bfcgywlvw5dacw4t4akk4zffpne2ktfjlhud2yc2jba
+  behaviours.py: bafybeicde7pumpgwsron63rerkvlluaapzk4gzx53k55kdkcbl6sog37cm
   dialogues.py: bafybeie2nmx4aucby7fy6yl6rzroubybcltvj5qlhkizxlrm6rrk5hio4q
-  handlers.py: bafybeia3umrkjmqtzrxaamposauhmn2hz4jbm4urzhrgtpvumkrvmgt7cq
-  strategy.py: bafybeib3dqetmxxtqc7y3wxp7n47d5viqqjdpmvwrs4m2fiwqvb4ocdhr4
+  handlers.py: bafybeie2jcumsevx6w5f42j3n4p25xltk7fxp4oufszdft3kloygzew72i
+  strategy.py: bafybeifyx6cqzbvxba6yuhqgvffzis6kjgd644gswazgnreubfjsjiismy
   tests/test_dialogues.py: bafybeicsgx4k2r3g4nw6rrt34mp2z4dj3ddzd3nljwf4yqzynwujccdpdq
 fingerprint_ignore_patterns: []
 connections:
-- valory/ledger:0.19.0:bafybeibiskshuj4nr5ttrg7dhb6izqh3w2xhjzo7ljhdh6h5ruv3rhhluy
+- valory/ledger:0.19.0:bafybeihtho6skcdtmfzy3ho5tf3wqemzojphzgupqj52cz2z2fpxycou2y
 contracts:
 - eightballer/erc_20:0.1.0:bafybeihzyver74cyqzngkzicirjnrphg464hzsyflngosrda7ickmvapzi
 protocols:
