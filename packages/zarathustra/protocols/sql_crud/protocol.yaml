@@ -1,0 +1,22 @@
+name: sql_crud
+author: zarathustra
+version: 0.1.0
+protocol_specification_id: zarathustra/sql_crud:0.1.0
+type: protocol
+description: A protocol for SQL CRUD functionality.
+license: Apache-2.0
+aea_version: '>=1.0.0, <2.0.0'
+fingerprint:
+  README.md: bafybeiee6cotpl7l2zvdouomebnrevg7bm55dapqsc5rviomgz4sxb5vhe
+  __init__.py: bafybeiedknz54dantdhpc2ltknfftvi3k5efi6kxhvfdpczxewgvquhfd4
+  custom_types.py: bafybeibnhuau6ulpz3jx6wlljkk2lr3gxn5os2ppx4eu56su7xsk7glwpm
+  dialogues.py: bafybeifxgdoha6gybjbf7a5uvfabogzlxw6goze5sfszojn77tceqomndy
+  message.py: bafybeickcdfyin6bz5z2gnc5rjjjahew23gkfh4alivacuqpdf5sxlba74
+  serialization.py: bafybeievwgipzo5me7ucxs5jez2sf2p7atzyfm7alnpt6wugdl2oxnjoc4
+  sql_crud.proto: bafybeicdenxncjerfvyhcpuyp2twbmzc5fruvf3tdrmxwbihfaziggigzm
+  sql_crud_pb2.py: bafybeifcfeqahri52eyr6npbmwk3kzldalp5lhiwqli7jcdzklynkntzbe
+  tests/test_sql_crud_dialogues.py: bafybeid2yitschnqchltixccy7w5p7it2ndvfr5hqrfhgosvncjxf2pioy
+  tests/test_sql_crud_messages.py: bafybeifcfsq7xcsvvj2zcd252z7cdvmqcp5eyos7enzsimbvrwi67bztti
+fingerprint_ignore_patterns: []
+dependencies:
+  protobuf: {}

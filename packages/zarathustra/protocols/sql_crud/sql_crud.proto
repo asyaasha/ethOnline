@@ -1,0 +1,100 @@
+syntax = "proto3";
+
+package aea.zarathustra.sql_crud.v0_1_0;
+
+message SqlCrudMessage{
+
+  // Custom Types
+  message ErrorCode{
+    enum ErrorCodeEnum {
+      ERROR_CODE_ENUM_INVALID_SQL_STATEMENT = 0;
+      ERROR_CODE_ENUM_INVALID_PERFORMATIVE = 1;
+    }
+    ErrorCodeEnum error_code = 1;
+  }
+
+  message LabeledRecords{
+    message Value {
+      oneof value {
+        bool bool_value = 1;
+        int64 int_value = 2;
+        string float_value = 3;
+        string str_value = 4;
+        bytes bytes_value = 5;
+      }
+    }
+    message Column {
+      string name = 1;
+      repeated Value values = 2;
+    }
+    repeated Column columns = 1;
+  }
+
+  message UpdateValues{
+    message KeyValuePair {
+      string key = 1;
+      oneof value {
+        string str_value = 2;
+        bool bool_value = 3;
+        int32 int_value = 4;
+        string float_value = 5;
+        bytes bytes_value = 6;
+      }
+    }
+    repeated KeyValuePair key_value_pairs = 1;
+  }
+
+
+  // Performatives and contents
+  message Insert_Performative{
+    string table_name = 1;
+    LabeledRecords labeled_records = 2;
+  }
+
+  message Select_Performative{
+    string table_name = 1;
+    repeated string columns = 2;
+    string condition = 3;
+    bool condition_is_set = 4;
+  }
+
+  message Update_Performative{
+    string table_name = 1;
+    UpdateValues update_values = 2;
+    string condition = 3;
+    bool condition_is_set = 4;
+  }
+
+  message Delete_Performative{
+    string table_name = 1;
+    string condition = 2;
+    bool condition_is_set = 3;
+  }
+
+  message Inject_Performative{
+    string statement = 1;
+  }
+
+  message Result_Performative{
+    int32 result_type_int = 1;
+    bool result_type_int_is_set = 2;
+    LabeledRecords result_type_LabeledRecords = 3;
+    bool result_type_LabeledRecords_is_set = 4;
+  }
+
+  message Error_Performative{
+    ErrorCode error_code = 1;
+    string error_msg = 2;
+  }
+
+
+  oneof performative{
+    Delete_Performative delete = 5;
+    Error_Performative error = 6;
+    Inject_Performative inject = 7;
+    Insert_Performative insert = 8;
+    Result_Performative result = 9;
+    Select_Performative select = 10;
+    Update_Performative update = 11;
+  }
+}
