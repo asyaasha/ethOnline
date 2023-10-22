@@ -158,7 +158,7 @@
 			</div>
 			<img class="faucet-img" src="/faucet2.png" alt="faucet" />
 			{#if account?.address}
-				<div class="pl-4">
+				<div class="pl-10">
 					<w3m-button label="Connect to Claim" />
 				</div>
 			{/if}
@@ -198,9 +198,9 @@
 	}
 
 	.faucet-img {
-		width: 200px;
+		width: 250px;
 		height: auto;
-		margin-left: 28px;
+		margin-left: 58px;
 		margin-bottom: 10px;
 	}
 
