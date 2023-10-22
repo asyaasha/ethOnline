@@ -1,3 +1,4 @@
+#! /bin/bash
 set -e 
 
 # fetch the agent from the local package registry
