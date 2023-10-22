@@ -80,7 +80,6 @@ class TransactionBehaviour(TickerBehaviour):
         if self.processing is None:
             return
         self.timedout.add(self.processing.dialogue_label)
-        self.waiting.append(self.processing.associated_fipa_dialogue)
         self.processing_time = 0.0
         self.processing = None
 

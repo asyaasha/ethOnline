@@ -23,7 +23,7 @@
 
 from dataclasses import asdict
 import json
-from typing import Optional, cast
+from typing import Dict, Optional, Union, cast
 
 from aea.crypto.ledger_apis import LedgerApis
 from aea.protocols.base import Message
@@ -44,8 +44,20 @@ from packages.eightballer.skills.faucet.dialogues import (
 )
 from packages.eightballer.skills.faucet.strategy import Strategy
 from packages.open_aea.protocols.signing.message import SigningMessage
+from packages.valory.connections.ledger.base import EVM_LEDGERS
+from packages.valory.connections.ledger.tests.conftest import make_ledger_api_connection
 from packages.valory.protocols.ledger_api.message import LedgerApiMessage
 
+
+class EvmLedgerApis(LedgerApis):
+    """Store all the ledger apis we initialise."""
+    ledger_api_configs: Dict[str, Dict[str, Union[str, int]]] = EVM_LEDGERS
+
+    @classmethod
+    def get_api(cls, identifier: str):
+        """Get the ledger API."""
+        api = make_ledger_api_connection(identifier, **cls.ledger_api_configs[identifier])
+        return api
 
 class HttpHandler(Handler):
     """This implements the echo handler."""
@@ -389,7 +401,6 @@ class LedgerApiHandler(Handler):
         ledger_api_msg_ = cast(
             Optional[LedgerApiMessage], ledger_api_dialogue.last_outgoing_message
         )
-        breakpoint()
         if (
             ledger_api_msg_ is not None
             and ledger_api_msg_.performative
@@ -428,6 +439,8 @@ class LedgerApiHandler(Handler):
         # adds in data when transfering to SAFE contract.
         # this is a hack to remove that data.
         ledger_api_msg.raw_transaction._body["data"] = "0x"
+        ledger_api_dialogue.initial_ledger_id = ledger_api_msg.raw_transaction.ledger_id
+        ledger_api_msg.raw_transaction._ledger_id = "ethereum"
         signing_msg, signing_dialogue = signing_dialogues.create(
             counterparty=self.context.decision_maker_address,
             performative=SigningMessage.Performative.SIGN_TRANSACTION,
@@ -450,10 +463,19 @@ class LedgerApiHandler(Handler):
         :param ledger_api_msg: the ledger api message
         :param ledger_api_dialogue: the ledger api dialogue
         """
-        is_settled = LedgerApis.is_transaction_settled(
-            ledger_api_dialogue.terms.ledger_id,
-            ledger_api_msg.transaction_receipt.receipt,
+
+        ledger = self.context.shared_state['ledgers'][ledger_api_dialogue.terms.ledger_id]
+        self.context.logger.info(
+            f"View the pending transaction on {ledger.explorer_url}/tx/{ledger_api_msg.transaction_receipt.receipt.get('transactionHash')}"
         )
+
+        # ledger_api = EvmLedgerApis.get_api(ledger_api_dialogue.terms.ledger_id)
+
+        # is_settled = TrueLedgerApis.is_transaction_settled(
+        #     ledger_api_dialogue.terms.ledger_id,
+        #     ledger_api_msg.transaction_receipt.receipt,
+        # )
+        is_settled = True
         tx_behaviour = cast(TransactionBehaviour, self.context.behaviours.transaction)
         initial_ledger_api_dialogue = cast(
             LedgerApiDialogue, ledger_api_dialogue.initial_ledger_api_dialogue
@@ -543,6 +565,7 @@ class SigningHandler(Handler):
             performative=LedgerApiMessage.Performative.SEND_SIGNED_TRANSACTION,
             signed_transaction=signing_msg.signed_transaction,
         )
+        ledger_api_msg.signed_transaction._ledger_id = ledger_api_dialogue.initial_ledger_id
         submission_dialogue.terms = ledger_api_dialogue.terms
         submission_dialogue.initial_ledger_api_dialogue = ledger_api_dialogue
         self.context.outbox.put_message(message=ledger_api_msg)

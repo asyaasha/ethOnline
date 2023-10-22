@@ -58,6 +58,46 @@ EVM_LEDGERS = {
     ]
 }
 
+# DEFAULT_LEDGER_CONFIGS: Dict[str, Dict[str, Union[str, int]]] = {
+#     _COSMOS_IDENTIFIER: {
+#         "address": COSMOS_DEFAULT_ADDRESS,
+#         "chain_id": COSMOS_DEFAULT_CHAIN_ID,
+#         "denom": COSMOS_DEFAULT_CURRENCY_DENOM,
+#     },
+#     _ETHEREUM_IDENTIFIER: {
+#         "address": ETHEREUM_DEFAULT_ADDRESS,
+#         "chain_id": ETHEREUM_DEFAULT_CHAIN_ID,
+#         "denom": ETHEREUM_DEFAULT_CURRENCY_DENOM,
+#     },
+#     _FETCHAI_IDENTIFIER: {
+#         "address": FETCHAI_DEFAULT_ADDRESS,
+#         "chain_id": FETCHAI_DEFAULT_CHAIN_ID,
+#         "denom": FETCHAI_DEFAULT_CURRENCY_DENOM,
+#     },
+#     _SOLANA_IDENTIFIER: {
+#         "address": SOLANA_DEFAULT_ADDRESS,
+#         "chain_id": SOLANA_DEFAULT_CHAIN_ID,
+#         "denom": SOLANA_DEFAULT_CURRENCY_DENOM,
+#     },
+# }
+
+_ETHEREUM_IDENTIFIER = "ethereum"
+_ETHEREUM_DEFAULT_ADDRESS = "http://0.0.0.0:8545"
+_ETHEREUM_DEFAULT_CHAIN_ID = 1
+_ETHEREUM_DEFAULT_CURRENCY_DENOM = "ETH"
+
+DEFAULT_LEDGER_CONFIGS: Dict[str, Dict[str, Union[str, int]]] = {
+    _ETHEREUM_IDENTIFIER: {
+        "address": _ETHEREUM_DEFAULT_ADDRESS,
+        "chain_id": _ETHEREUM_DEFAULT_CHAIN_ID,
+        "denom": _ETHEREUM_DEFAULT_CURRENCY_DENOM,
+    }
+}
+
+for identifier, data in EVM_LEDGERS.items():
+    DEFAULT_LEDGER_CONFIGS[identifier] = DEFAULT_LEDGER_CONFIGS[_ETHEREUM_IDENTIFIER].copy()
+
+
 
 class RequestDispatcher(ABC):
     """Base class for a request dispatcher."""
@@ -181,8 +221,6 @@ class RequestDispatcher(ABC):
             )
         performative = message.performative
         handler = self.get_handler(performative)
-        if performative == LedgerApiMessage.Performative.GET_RAW_TRANSACTION:
-            return self.loop.create_task(handler(api, message, dialogue))
         return self.loop.create_task(self.run_async(handler, api, message, dialogue))
 
     def get_handler(self, performative: Any) -> Callable[[Any], Task]:
