@@ -61,3 +61,28 @@ paths:
                 properties:
                   ledgers:
                     type: array
+  /config:
+    get:
+      summary: Returns the config of the agent.
+      responses:
+        '200':
+          description: A Json response
+          content:
+            application/json:
+              schema:
+                type: object
+  /txs:
+    get:
+      summary: Returns a list of transactions from ther faucet
+      responses:
+        '200':
+          description: A Json response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  transactions:
+                    type: array
+
+

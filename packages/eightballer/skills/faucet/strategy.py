@@ -161,3 +161,7 @@ class Strategy(Model):  # pylint: disable=too-many-instance-attributes
         return self._ban_list + [
             i.public_address for i in self.session.query(BanList).all()
         ]
+
+    def get_txs(self):
+        """Get the transactions from the database."""
+        return self.session.query(DripRequest).all()

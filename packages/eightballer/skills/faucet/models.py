@@ -47,6 +47,16 @@ class DripRequest(Base):  # type: ignore
     valid_request = Column(Boolean)
     ledger_id = Column(String)
 
+    def as_dict(self):
+        datetime_str = self.created_at.strftime("%Y-%m-%d %H:%M:%S")
+        return {
+            "id": self.id,
+            "created_at": datetime_str,
+            "public_address": self.public_address,
+            "valid_request": self.valid_request,
+            "ledger_id": self.ledger_id,
+        }
+
 
 class AllowList(Base):  # type: ignore
     """Represents a whitelisted address."""

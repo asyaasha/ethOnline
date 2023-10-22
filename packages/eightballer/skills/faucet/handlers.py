@@ -133,6 +133,10 @@ class HttpHandler(Handler):
             self._return_whitelist(http_msg, http_dialogue)
         elif http_msg.url.find("ledgers") >= 0 and http_msg.method == "get":
             self._return_ledgers(http_msg, http_dialogue)
+        elif http_msg.url.find("txs") >= 0 and http_msg.method == "get":
+            self._return_txs(http_msg, http_dialogue)
+        elif http_msg.url.find("config") >= 0 and http_msg.method == "get":
+            self._return_config(http_msg, http_dialogue)
         else:
             self._handle_invalid(http_msg, http_dialogue)
 
@@ -157,6 +161,47 @@ class HttpHandler(Handler):
             body=json.dumps({"ledgers": {i: asdict(k) for i, k in ledgers.items()}}).encode("utf-8"),
         )
         self.context.outbox.put_message(message=http_response)
+    
+    def _return_txs(
+        self, http_msg: HttpMessage, http_dialogue: HttpDialogue
+    ) -> None:
+        """
+        Handle a Http request of verb GET.
+
+        :param http_msg: the http message
+        :param http_dialogue: the http dialogue
+        """
+        txs = self.context.strategy.get_txs()
+        http_response = http_dialogue.reply(
+            performative=HttpMessage.Performative.RESPONSE,
+            target_message=http_msg,
+            version=http_msg.version,
+            status_code=200,
+            status_text="",
+            headers=http_msg.headers,
+            body=json.dumps([f.as_dict() for f in txs]).encode("utf-8"),
+        )
+        self.context.outbox.put_message(message=http_response)
+    def _return_config( 
+        self, http_msg: HttpMessage, http_dialogue: HttpDialogue
+    ) -> None:
+        """
+        Handle a Http request of verb GET.
+
+        :param http_msg: the http message
+        :param http_dialogue: the http dialogue
+        """
+        http_response = http_dialogue.reply(
+            performative=HttpMessage.Performative.RESPONSE,
+            target_message=http_msg,
+            version=http_msg.version,
+            status_code=200,
+            status_text="",
+            headers=http_msg.headers,
+            body=json.dumps({"agent_address": f"{self.context.agent_address}"}).encode("utf-8"),
+        )
+        self.context.outbox.put_message(message=http_response)
+
 
     def _return_whitelist(
         self, http_msg: HttpMessage, http_dialogue: HttpDialogue

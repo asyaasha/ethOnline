@@ -14,6 +14,7 @@
 	$: inputUrl = url;
 </script>
 
+
 <div>
 	<input type="text" placeholder="Enter your grafana url" bind:value={url} />
 	<div class="connected mt-2 ml-2">

@@ -11,10 +11,10 @@ fingerprint:
   __init__.py: bafybeiahk7d53avvtbgfvmmbmvzsu5dktqnujgyd2o4cko6ntssjzmh5vi
   behaviours.py: bafybeih2j537nhf23rbxj2iblizvo2vdx4dcpg34hni7gz5zumrgoe2xne
   dialogues.py: bafybeigyd6mmsc7ms5di7bnsmjewwswdkreulf5fuh3wrzuat2pqe5nn6y
-  handlers.py: bafybeidpcydyh5x5vztdd7muqvwgeqvhjsub2bezflfa5b6yrsfsunxj7u
-  models.py: bafybeihiszi2r5halwdhpfrohpu5ifigqxj6gjpzqfkmuzlwv4uhtdsuam
-  open_api_spec.yaml: bafybeidoffrkxwexfdsvo5rrsxkns5zemdyhwblxjgi6t3h3bdas74uuda
-  strategy.py: bafybeidh65vqzgir6ekc74yaj754oesyjyytnffde23ckcf4xafbybeg4a
+  handlers.py: bafybeigrowagk6v5jehypbzdjgsd27cgid7gj4vj535tu5kw46yiudk5um
+  models.py: bafybeiacdanmjufuai3evn2og5ltxm5r36ugme2x5qvkfyoblviun25iby
+  open_api_spec.yaml: bafybeiceqdmi5hnwrovukzaimtytfydj5xxnezhvq3co4yn47gqottxqsy
+  strategy.py: bafybeia2hmbd2fkv3ygo5p46w5foubud2kazeerv5sdmpmbxlrjv5kxa4u
   tests/test_base.py: bafybeifdxtgkxo7shk5apcwtfp6nbf6ik274cnbfmhnmiel3kqo2ok7iqa
 fingerprint_ignore_patterns: []
 connections:
