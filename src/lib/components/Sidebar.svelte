@@ -1,14 +1,71 @@
 <script>
+	import { TabGroup, Tab, TabAnchor } from '@skeletonlabs/skeleton';
+
+	import { popup } from '@skeletonlabs/skeleton';
+	import { enhance, applyAction } from '$app/forms';
+	import { createWeb3Modal, defaultWagmiConfig } from '@web3modal/wagmi';
+	import {
+		mainnet,
+		gnosis,
+		sepolia,
+		polygon,
+		filecoin,
+		filecoinCalibration,
+		mantle,
+		mantleTestnet,
+		scrollSepolia,
+		scrollTestnet
+	} from '@wagmi/core/chains';
 	import ChainsSelect from '$lib/components/ChainsSelect.svelte';
-	import { postClaim } from '$lib/actions/postClaim';
+	import { getWeb3Details } from '$lib/utils';
+
+	const chains = [
+		mainnet,
+		gnosis,
+		sepolia,
+		polygon,
+		filecoin,
+		filecoinCalibration,
+		mantle,
+		mantleTestnet,
+		scrollSepolia,
+		scrollTestnet
+	];
+	const projectId = '1b0aad06235a3007b00055160c73fe1d';
+	const wagmiConfig = defaultWagmiConfig({
+		chains,
+		projectId
+	});
+	const modal = createWeb3Modal({ wagmiConfig, projectId, chains });
+
+	/**
+	 * @type {any}
+	 */
+	const popupHover = {
+		event: 'hover',
+		target: 'popupHover',
+		placement: 'top'
+	};
 
 	/**
 	 * @type {any}
 	 */
 	let selectedChain;
+	let tabSet = 0;
 
-	function handleClaim() {
-		postClaim(selectedChain.ledger_id, 'public_address'); // todo: update address
+	let resMsg = '';
+	let loading = false;
+
+	/**
+	 * @type {any}
+	 */
+	export let data;
+
+	const { account } = getWeb3Details();
+	$: if (resMsg) {
+		setTimeout(() => {
+			resMsg = '';
+		}, 5000);
 	}
 </script>
 
@@ -22,23 +79,102 @@
 	</div>
 	<div class="content">
 		<div class="pt-20">
+			<div class="pb-2">Claim from a faucet</div>
 			<div>
-				<ChainsSelect selected={selectedChain} />
+				<ChainsSelect bind:selected={selectedChain} data={data?.data || []} />
 			</div>
 		</div>
 
 		<div>
 			<div class="px-2 mb-4">
-				<button on:click={handleClaim} type="button" class="btn variant-ghost-secondary w-full"
-					>Claim</button
-				>
+				{#if !account?.address}
+					<div class="pl-4">
+						<w3m-button label="Connect to Claim" />
+					</div>
+				{:else}
+					<form
+						method="POST"
+						action="/claim?/postClaim"
+						use:enhance={() => {
+							return async ({ result, update }) => {
+								/**
+								 * @type {any}
+								 */
+								let res = result;
+								loading = true;
+
+								resMsg = res?.data?.result;
+								await applyAction(result); // manually call applyAction to update `page.form`
+								await update();
+								loading = false;
+							};
+						}}
+					>
+						<input type="hidden" name="ledger_id" value={selectedChain?.ledger_id} />
+						<TabGroup>
+							<Tab bind:group={tabSet} name="tab1" value={0}>
+								<span>Whitelisted</span>
+							</Tab>
+							<Tab bind:group={tabSet} name="tab2" value={1}>Custom Address</Tab>
+							<!-- Tab Panels --->
+							<svelte:fragment slot="panel">
+								{#if tabSet === 0}
+									<div class="mb-4 w-full tab">select from whitelisted addresses</div>
+								{:else}
+									<div class="mb-4 w-full tab">
+										<input
+											class="mb-4 w-full address"
+											name="address"
+											placeholder="Enter address.."
+										/>
+									</div>
+								{/if}
+							</svelte:fragment>
+						</TabGroup>
+						<button use:popup={popupHover} type="submit" class="btn variant-ghost-secondary w-full"
+							>Claim</button
+						>
+						{#if loading}
+							<div class="pt-2 status">Loading...</div>
+						{/if}
+						{#if resMsg}
+							<div class="pt-2 status">{resMsg}</div>
+						{/if}
+					</form>
+				{/if}
 			</div>
 			<img class="faucet-img" src="/faucet2.png" alt="faucet" />
+			{#if account?.address}
+				<div class="pl-4">
+					<w3m-button label="Connect to Claim" />
+				</div>
+			{/if}
 		</div>
+	</div>
+	<div class="card p-4 variant-filled-secondary" data-popup="popupHover">
+		<p>Select a ledger to claim tokens from a faucet</p>
+		<div class="arrow variant-filled-secondary" />
 	</div>
 </div>
 
 <style>
+	.status {
+		width: 110px;
+		color: #a8dfb0;
+		font-size: 13px;
+	}
+
+	.tab {
+		height: 100px;
+	}
+
+	.address {
+		padding: 5px;
+		border-radius: 5px;
+		font-size: 12px;
+		color: black;
+	}
+
 	.title {
 		font-weight: 700;
 		letter-spacing: 1.6px;
@@ -50,6 +186,8 @@
 	.faucet-img {
 		width: 200px;
 		height: auto;
+		margin-left: 28px;
+		margin-bottom: 10px;
 	}
 
 	.sidebar {
@@ -71,7 +209,7 @@
 		flex-direction: column;
 		justify-content: space-between;
 		padding: 0 15px 10px;
-		height: 88vh;
+		height: 92vh;
 	}
 
 	.logo {

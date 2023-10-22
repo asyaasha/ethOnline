@@ -5,6 +5,7 @@ data
 !.env.template
 !.bumpversion.cfg
 
+node_modules
 
 packages/eightballer/connections/
 packages/eightballer/contracts/
