@@ -65,5 +65,6 @@ pull:
 	git checkout main
 	rm -rf packages
 	git pull
+	git checkout packages
 	poetry run autonomy packages sync
 	

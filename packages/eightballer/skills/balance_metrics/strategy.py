@@ -52,13 +52,6 @@ LEDGERS = [
         native_currency="ETH",
     ),
     Ledger(
-        ledger_id="kovan",
-        chain_id=42,
-        chain_name="Kovan",
-        explorer_url="https://kovan.etherscan.io/",
-        native_currency="ETH",
-    ),
-    Ledger(
         ledger_id="binance",
         chain_id=56,
         chain_name="Binance",

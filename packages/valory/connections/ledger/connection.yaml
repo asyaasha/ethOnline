@@ -1,0 +1,181 @@
+name: ledger
+author: valory
+version: 0.19.0
+type: connection
+description: A connection to interact with any ledger API and contract API.
+license: Apache-2.0
+aea_version: '>=1.0.0, <2.0.0'
+fingerprint:
+  .hypothesis/unicode_data/13.0.0/charmap.json.gz: bafybeid3tft6cdmb3z6bxwpo7tr4hvpbsepqdypep5qlmlr5l3z3454s5q
+  README.md: bafybeihkgodu7o7v6pfazm7u6orlspsfrae3cyz36yc46x67phfmw3l57e
+  __init__.py: bafybeia3purd7y4b7tkdt2fcaxkdazos32criq5hx6fhufaislrdefe674
+  base.py: bafybeiepwo6f4phe2au5umngfhsurw3bzhtvmhd77klxfuoegq454pxeym
+  chains.json: bafybeicyksh6oin4an6quxu4baeieezzx6f4dcsyvxenxhhq5vt4usjyzi
+  connection.py: bafybeihp4ehnz2vasdwtqdy6y45w3mmd2krnpks6cexfe254gtuesqntcq
+  contract_dispatcher.py: bafybeihqcbyg22tn6ilyweboij5c67sa5bntq7b7mmkwfzwyplnwrle5ha
+  evm_chains.py: bafybeigfp6dvfmixpxgp67icwvjlq7zfpsgfqspqnmtgzer4igzn3scwjq
+  ledger_dispatcher.py: bafybeie5xjyxw7qs32qtkwnkowhjgqn332g7h2wuha6rlgryf6jphmvweu
+  tests/__init__.py: bafybeifku7ttsmbj4gfx6dkgjvwypx7v5ysfqlzof6vh4p7gujakjtuwhe
+  tests/conftest.py: bafybeiaphuaf24lyskiz7fzg4ef5upet7djpmyqfir6hqpnwmvqnawqt6u
+  tests/test_contract_dispatcher.py: bafybeiguo6jcrx66ob66dp6rnkilho2xsdovz6yuzj3lsfwn5he77tgoou
+  tests/test_ledger.py: bafybeiherdjaip635tv66pj5pycwbcwakbk2lzqo6ygila5fmy6md2qrem
+  tests/test_ledger_api.py: bafybeieycwrnahcjxcwttxfyihojeogamvehyd5n6rfgte4427skwteuta
+fingerprint_ignore_patterns: []
+connections: []
+protocols:
+- valory/contract_api:1.0.0:bafybeib3abpck4a6a63vyymd2pdiwijdsqk43hrrxz734v5ghxje46pxgm
+- valory/ledger_api:1.0.0:bafybeidltb2fvcfokf7a2i3jnrf4kmmsn5bxmcrwdtbz2nrrzhpj4dlzwe
+class_name: LedgerConnection
+config:
+  ledger_apis:
+    ethereum:
+      address: http://127.0.0.1:8545
+      chain_id: 1337
+      default_gas_price_strategy: eip1559
+      gas_price_strategies: &id001
+        gas_station:
+          gas_price_api_key: null
+          gas_price_strategy: fast
+        eip1559:
+          max_gas_fast: 1500
+          fee_history_blocks: 10
+          fee_history_percentile: 5
+          priority_fee_estimation_trigger: 100
+          default_priority_fee: 3
+          fallback_estimate:
+            maxFeePerGas: 20000000000
+            maxPriorityFeePerGas: 3000000000
+            baseFee: null
+          priority_fee_increase_boundary: 200
+      is_gas_estimation_enabled: true
+      poa_chain: false
+    ethereum_flashbots:
+      address: http://127.0.0.1:8545
+      chain_id: 1337
+      default_gas_price_strategy: eip1559
+      gas_price_strategies: *id001
+      is_gas_estimation_enabled: true
+      poa_chain: false
+      authentication_private_key: null
+      flashbot_relayer_uri: null
+    solana:
+      address: http://127.0.0.1:8545
+      chain_id: 1337
+      default_gas_price_strategy: eip1559
+      gas_price_strategies: *id001
+      is_gas_estimation_enabled: true
+      poa_chain: false
+    celo:
+      address: https://forno.celo.org
+      chain_id: 42220
+      default_gas_price_strategy: eip1559
+      gas_price_strategies: '*id001'
+      is_gas_estimation_enabled: true
+      poa_chain: false
+    canto:
+      address: https://canto.slingshot.finance
+      chain_id: 7700
+      default_gas_price_strategy: eip1559
+      gas_price_strategies: '*id001'
+      is_gas_estimation_enabled: true
+      poa_chain: false
+    bsc:
+      address: https://bsc-dataseed1.bnbchain.org
+      chain_id: 56
+      default_gas_price_strategy: eip1559
+      gas_price_strategies: '*id001'
+      is_gas_estimation_enabled: true
+      poa_chain: false
+    zksync:
+      address: https://mainnet.era.zksync.io
+      chain_id: 324
+      default_gas_price_strategy: eip1559
+      gas_price_strategies: '*id001'
+      is_gas_estimation_enabled: true
+      poa_chain: false
+    matic:
+      address: https://polygon-rpc.com/
+      chain_id: 137
+      default_gas_price_strategy: eip1559
+      gas_price_strategies: '*id001'
+      is_gas_estimation_enabled: true
+      poa_chain: false
+    optimism:
+      address: https://mainnet.optimism.io
+      chain_id: 10
+      default_gas_price_strategy: eip1559
+      gas_price_strategies: '*id001'
+      is_gas_estimation_enabled: true
+      poa_chain: false
+    arbitrum:
+      address: https://arbitrum-mainnet.infura.io/v3/${INFURA_API_KEY}
+      chain_id: 42161
+      default_gas_price_strategy: eip1559
+      gas_price_strategies: '*id001'
+      is_gas_estimation_enabled: true
+      poa_chain: false
+    avalanche:
+      address: https://api.avax-test.network/ext/bc/C/rpc
+      chain_id: 43113
+      default_gas_price_strategy: eip1559
+      gas_price_strategies: '*id001'
+      is_gas_estimation_enabled: true
+      poa_chain: false
+    gnosis:
+      address: https://rpc.gnosischain.com
+      chain_id: 100
+      default_gas_price_strategy: eip1559
+      gas_price_strategies: '*id001'
+      is_gas_estimation_enabled: true
+      poa_chain: false
+    base:
+      address: https://mainnet.base.org/
+      chain_id: 8453
+      default_gas_price_strategy: eip1559
+      gas_price_strategies: '*id001'
+      is_gas_estimation_enabled: true
+      poa_chain: false
+    fantom:
+      address: https://rpc.ftm.tools
+      chain_id: 250
+      default_gas_price_strategy: eip1559
+      gas_price_strategies: '*id001'
+      is_gas_estimation_enabled: true
+      poa_chain: false
+    scroll:
+      address: https://rpc.scroll.io
+      chain_id: 534352
+      default_gas_price_strategy: eip1559
+      gas_price_strategies: '*id001'
+      is_gas_estimation_enabled: true
+      poa_chain: false
+    spark:
+      address: https://rpc.fusespark.io
+      chain_id: 123
+      default_gas_price_strategy: eip1559
+      gas_price_strategies: '*id001'
+      is_gas_estimation_enabled: true
+      poa_chain: false
+    mantle:
+      address: https://rpc.mantle.xyz
+      chain_id: 5000
+      default_gas_price_strategy: eip1559
+      gas_price_strategies: '*id001'
+      is_gas_estimation_enabled: true
+      poa_chain: false
+    filecoin:
+      address: https://api.node.glif.io/
+      chain_id: 314
+      default_gas_price_strategy: eip1559
+      gas_price_strategies: '*id001'
+      is_gas_estimation_enabled: true
+      poa_chain: false
+  retry_attempts: 240
+  retry_timeout: 3
+excluded_protocols: []
+restricted_to_protocols:
+- valory/contract_api:1.0.0
+- valory/ledger_api:1.0.0
+dependencies:
+  pytest-asyncio: {}
+is_abstract: false

@@ -11,11 +11,11 @@ fingerprint:
   behaviours.py: bafybeidntgux7ynv33o373yoaksdg6ssgiu5lhmiep7o7xtyqqdzgfzh2q
   dialogues.py: bafybeie2nmx4aucby7fy6yl6rzroubybcltvj5qlhkizxlrm6rrk5hio4q
   handlers.py: bafybeiax5mgcltn3zzl33muao4juh6devvgl362ozrc2kgg4uqfjdpdkau
-  strategy.py: bafybeib3d435atza253laaotibg4qfidb7jh4c5nbcej4yr55e23sgyuja
+  strategy.py: bafybeib3dqetmxxtqc7y3wxp7n47d5viqqjdpmvwrs4m2fiwqvb4ocdhr4
   tests/test_dialogues.py: bafybeicsgx4k2r3g4nw6rrt34mp2z4dj3ddzd3nljwf4yqzynwujccdpdq
 fingerprint_ignore_patterns: []
 connections:
-- valory/ledger:0.19.0:bafybeiagnsog5xcs6ipme5l2uckbfctzd3whogxfpbyfdub62sh5gyh67a
+- valory/ledger:0.19.0:bafybeibiskshuj4nr5ttrg7dhb6izqh3w2xhjzo7ljhdh6h5ruv3rhhluy
 contracts:
 - eightballer/erc_20:0.1.0:bafybeihzyver74cyqzngkzicirjnrphg464hzsyflngosrda7ickmvapzi
 protocols:
