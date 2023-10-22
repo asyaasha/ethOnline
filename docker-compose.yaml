@@ -36,6 +36,7 @@ services:
       - POSTGRES_DB=${POSTGRES_DB}
       - POSTGRES_HOST=${POSTGRES_HOST}
       - GF_SECURITY_ALLOW_EMBEDDING=true 
+      - GF_FEATURE_TOGGLES_ENABLE=publicDashboards
     volumes:
       - ./data/grafana:/var/lib/grafana  
       - ./grafana-provisioning:/etc/grafana/provisioning
