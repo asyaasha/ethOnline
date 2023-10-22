@@ -11,6 +11,7 @@
         "protocol/eightballer/http/0.1.0": "bafybeibels7dv7ucflaeniwifbisvkegm5vrarrr5ctkcqebg4t7onba6a",
         "protocol/valory/contract_api/1.0.0": "bafybeib3abpck4a6a63vyymd2pdiwijdsqk43hrrxz734v5ghxje46pxgm",
         "connection/eightballer/http_server/0.1.0": "bafybeifvztshvoeie6mghz23z75he4jns2bs3p64l4rb2tf5ausevcuti4",
+        "connection/eightballer/http_client/0.1.0": "bafybeidbonr55keq4cothrhhvjwevmu3vl34caqvlxk7n3mnrp2lyarws4",
         "protocol/valory/ledger_api/1.0.0": "bafybeidltb2fvcfokf7a2i3jnrf4kmmsn5bxmcrwdtbz2nrrzhpj4dlzwe",
         "skill/eightballer/prometheus/0.1.0": "bafybeif4evjhwa3ac5bdojqs2gi7pvr6evnnwml2gsopktdnc6fx3vr5tu",
         "contract/eightballer/erc_20/0.1.0": "bafybeihzyver74cyqzngkzicirjnrphg464hzsyflngosrda7ickmvapzi",
