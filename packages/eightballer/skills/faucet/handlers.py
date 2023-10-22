@@ -129,10 +129,10 @@ class HttpHandler(Handler):
             self._handle_claim(http_msg, http_dialogue)
         elif http_msg.method == "options":
             self._handle_pre_flight(http_msg, http_dialogue)
-        elif http_msg.url.find("ledgers") and http_msg.method == "get":
-            self._return_ledgers(http_msg, http_dialogue)
-        elif http_msg.url.find("whitelist") and http_msg.method == "get":
+        elif http_msg.url.find("whitelist") >= 0 and http_msg.method == "get":
             self._return_whitelist(http_msg, http_dialogue)
+        elif http_msg.url.find("ledgers") >= 0 and http_msg.method == "get":
+            self._return_ledgers(http_msg, http_dialogue)
         else:
             self._handle_invalid(http_msg, http_dialogue)
 

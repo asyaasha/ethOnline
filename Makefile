@@ -17,6 +17,9 @@ clean-build:
 	find . -name '*.db' -exec rm -fr {} +
 	rm -fr .idea .history
 	rm -fr venv
+	rm -rf tmp 
+	rm -rf packages/eightballer/agents/agent
+	rm -rf agent
 
 .PHONY: clean-docs
 clean-docs:
@@ -58,7 +61,6 @@ test:
 
 all: fmt lint test hashes
 
-run_agent:
+run_agent: clean-build
 	 bash scripts/run_single_agent.sh eightballer/defi_agent
-
 	
