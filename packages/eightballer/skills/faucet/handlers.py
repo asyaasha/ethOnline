@@ -23,7 +23,7 @@
 
 from dataclasses import asdict
 import json
-from typing import Optional, cast
+from typing import Dict, Optional, Union, cast
 
 from aea.crypto.ledger_apis import LedgerApis
 from aea.protocols.base import Message
@@ -44,8 +44,20 @@ from packages.eightballer.skills.faucet.dialogues import (
 )
 from packages.eightballer.skills.faucet.strategy import Strategy
 from packages.open_aea.protocols.signing.message import SigningMessage
+from packages.valory.connections.ledger.base import EVM_LEDGERS
+from packages.valory.connections.ledger.tests.conftest import make_ledger_api_connection
 from packages.valory.protocols.ledger_api.message import LedgerApiMessage
 
+
+class EvmLedgerApis(LedgerApis):
+    """Store all the ledger apis we initialise."""
+    ledger_api_configs: Dict[str, Dict[str, Union[str, int]]] = EVM_LEDGERS
+
+    @classmethod
+    def get_api(cls, identifier: str):
+        """Get the ledger API."""
+        api = make_ledger_api_connection(identifier, **cls.ledger_api_configs[identifier])
+        return api
 
 class HttpHandler(Handler):
     """This implements the echo handler."""
@@ -452,12 +464,18 @@ class LedgerApiHandler(Handler):
         :param ledger_api_dialogue: the ledger api dialogue
         """
 
-        breakpoint()
-
-        is_settled = LedgerApis.is_transaction_settled(
-            ledger_api_dialogue.terms.ledger_id,
-            ledger_api_msg.transaction_receipt.receipt,
+        ledger = self.context.shared_state['ledgers'][ledger_api_dialogue.terms.ledger_id]
+        self.context.logger.info(
+            f"View the pending transaction on {ledger.explorer_url}/tx/{ledger_api_msg.transaction_receipt.receipt.get('transactionHash')}"
         )
+
+        # ledger_api = EvmLedgerApis.get_api(ledger_api_dialogue.terms.ledger_id)
+
+        # is_settled = TrueLedgerApis.is_transaction_settled(
+        #     ledger_api_dialogue.terms.ledger_id,
+        #     ledger_api_msg.transaction_receipt.receipt,
+        # )
+        is_settled = True
         tx_behaviour = cast(TransactionBehaviour, self.context.behaviours.transaction)
         initial_ledger_api_dialogue = cast(
             LedgerApiDialogue, ledger_api_dialogue.initial_ledger_api_dialogue
