@@ -1,5 +1,5 @@
 <script>
-	import { TabGroup, Tab, TabAnchor } from '@skeletonlabs/skeleton';
+	import { TabGroup, Tab } from '@skeletonlabs/skeleton';
 
 	import { popup } from '@skeletonlabs/skeleton';
 	import { enhance, applyAction } from '$app/forms';
@@ -16,7 +16,8 @@
 		scrollSepolia,
 		scrollTestnet
 	} from '@wagmi/core/chains';
-	import ChainsSelect from '$lib/components/ChainsSelect.svelte';
+	import LedgerSelect from '$lib/components/LedgerSelect.svelte';
+	import AddressSelect from '$lib/components/AddressSelect.svelte';
 	import { getWeb3Details } from '$lib/utils';
 
 	const chains = [
@@ -52,6 +53,10 @@
 	 */
 	let selectedChain;
 	let tabSet = 0;
+	/**
+	 * @type {any}
+	 */
+	let selectedAddress;
 
 	let resMsg = '';
 	let loading = false;
@@ -81,7 +86,7 @@
 		<div class="pt-20">
 			<div class="pb-2">Claim from a faucet</div>
 			<div>
-				<ChainsSelect bind:selected={selectedChain} data={data?.data || []} />
+				<LedgerSelect bind:selected={selectedChain} data={data?.ledgers || []} />
 			</div>
 		</div>
 
@@ -119,7 +124,15 @@
 							<!-- Tab Panels --->
 							<svelte:fragment slot="panel">
 								{#if tabSet === 0}
-									<div class="mb-4 w-full tab">select from whitelisted addresses</div>
+									<div class="mb-4 w-full tab">
+										<input
+											type="hidden"
+											name="address"
+											value={selectedAddress}
+											placeholder="Select from whitelisted.."
+										/>
+										<AddressSelect bind:selected={selectedAddress} data={data?.whitelisted || []} />
+									</div>
 								{:else}
 									<div class="mb-4 w-full tab">
 										<input
@@ -159,13 +172,14 @@
 
 <style>
 	.status {
-		width: 110px;
+		width: 250px;
 		color: #a8dfb0;
 		font-size: 13px;
 	}
 
 	.tab {
 		height: 100px;
+		width: 380px;
 	}
 
 	.address {
