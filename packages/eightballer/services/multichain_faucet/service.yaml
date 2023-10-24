@@ -1,0 +1,12 @@
+name: multichain_faucet
+author: eightballer
+version: 0.1.0
+description: An agent service which allows the agent to interact cross chain and cross
+  platform acting as a faucet for holders of olas.
+aea_version: '>=1.0.0, <2.0.0'
+license: Apache-2.0
+fingerprint: {}
+fingerprint_ignore_patterns: []
+agent: eightballer/defi_agent:0.1.0:bafybeietpajdq27cquldzsttbqi5jstjix46xyidh2dishlml2jy5ta7iy
+number_of_agents: 1
+deployment: {}

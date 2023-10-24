@@ -2,7 +2,7 @@ agent_name: defi_agent
 author: eightballer
 version: 0.1.0
 license: Apache-2.0
-description: ''
+description: The defi agent allows the agent to interact cross chain and cross platform.
 aea_version: '>=1.35.0, <2.0.0'
 fingerprint: {}
 fingerprint_ignore_patterns: []

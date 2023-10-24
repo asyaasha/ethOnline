@@ -8,7 +8,8 @@
         "skill/eightballer/prometheus/0.1.0": "bafybeid4agagdtoqskjsfoicczemzlkobictmkwzfu7m3pdvgaq4gikq4a",
         "skill/eightballer/faucet/0.1.0": "bafybeifuc3uxfpf7miutuv3yffvdxjjhkaaccis5uwixytwdjui65fvj64",
         "skill/eightballer/balance_metrics/0.1.0": "bafybeifnldfbuunj6n74nxoljlnemuetqjg7ewlpggrw5hmaeo2onfo3my",
-        "agent/eightballer/defi_agent/0.1.0": "bafybeifyseyqc6mpeyvpltvu7ej6sxuvlds53raeryufs2gqiot6fhyc2i"
+        "agent/eightballer/defi_agent/0.1.0": "bafybeietpajdq27cquldzsttbqi5jstjix46xyidh2dishlml2jy5ta7iy",
+        "service/eightballer/multichain_faucet/0.1.0": "bafybeih5swrogsto6nhwfrlohewpoqu2raiitypflcduqpfghm6scpbew4"
     },
     "third_party": {
         "protocol/eightballer/http/0.1.0": "bafybeibels7dv7ucflaeniwifbisvkegm5vrarrr5ctkcqebg4t7onba6a",
