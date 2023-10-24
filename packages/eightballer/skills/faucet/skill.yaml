@@ -2,8 +2,8 @@ name: faucet
 author: eightballer
 version: 0.1.0
 type: skill
-description: The http echo skill prints out the content of received http messages
-  and responds with success.
+description: The faucet skill allows holders of olas to claim a tiny amount of native
+  balance on any supported chain.
 license: Apache-2.0
 aea_version: '>=1.0.0, <2.0.0'
 fingerprint:

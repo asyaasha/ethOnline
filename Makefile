@@ -80,4 +80,5 @@ make_meta:
 	adev metadata generate . protocol/eightballer/prometheus/1.0.0 0 && adev -v metadata validate  mints/0.json
 	adev metadata generate . connection/eightballer/prometheus/0.1.1 1 && adev -v metadata validate  mints/1.json
 	adev metadata generate . skill/eightballer/prometheus/0.1.0 2 && adev -v metadata validate  mints/2.json
+	adev metadata generate . skill/eightballer/faucet/0.1.0 3 && adev -v metadata validate  mints/3.json
 
