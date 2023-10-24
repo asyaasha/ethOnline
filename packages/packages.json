@@ -1,11 +1,14 @@
 {
     "dev": {
         "protocol/eightballer/prometheus/1.0.0": "bafybeidg56u4eza6z3pqkpcqw5cvobjar6azi5yko4joaosb2ev5buqrdq",
+        "protocol/eightballer/default/0.1.0": "bafybeicj23oli6dvzj22sfvtfc46duqzvbpis5yskq5f5t55qikvwjtfme",
+        "protocol/eightballer/fipa/0.1.0": "bafybeief7f7xh6lgqiqtk333jwdec7occpvlalankbwvrhndxupt44brja",
         "connection/eightballer/prometheus/0.1.1": "bafybeibc5x4ldgtl7jrgz4vjtbm3o6bf2zeyfsa47vftbpeszotl3x2knm",
+        "contract/eightballer/erc_20/0.1.0": "bafybeibxueckvtfxuzfmg6mbs66vhbaztqreqennezvtf3sg4de3cqvmtq",
         "skill/eightballer/prometheus/0.1.0": "bafybeid4agagdtoqskjsfoicczemzlkobictmkwzfu7m3pdvgaq4gikq4a",
-        "skill/eightballer/faucet/0.1.0": "bafybeic4vq3dehio2bx5c7oug2mi6c2ca4vynbewp2b62f5xr5exe4cb2y",
-        "skill/eightballer/balance_metrics/0.1.0": "bafybeihu2pye6nibmxa574udjkk65k4wyuf25vulgkrzystaamkask5bhq",
-        "agent/eightballer/defi_agent/0.1.0": "bafybeifuraxje44cvwydqvkda3vigcqsbxujuruczt4edyhohdgnfkzk3i"
+        "skill/eightballer/faucet/0.1.0": "bafybeifuc3uxfpf7miutuv3yffvdxjjhkaaccis5uwixytwdjui65fvj64",
+        "skill/eightballer/balance_metrics/0.1.0": "bafybeifnldfbuunj6n74nxoljlnemuetqjg7ewlpggrw5hmaeo2onfo3my",
+        "agent/eightballer/defi_agent/0.1.0": "bafybeifyseyqc6mpeyvpltvu7ej6sxuvlds53raeryufs2gqiot6fhyc2i"
     },
     "third_party": {
         "protocol/eightballer/http/0.1.0": "bafybeibels7dv7ucflaeniwifbisvkegm5vrarrr5ctkcqebg4t7onba6a",
@@ -15,10 +18,7 @@
         "connection/eightballer/http_server/0.1.0": "bafybeiecw7wqiieupupak4hce3fsvcl7u55gcmgorxescitn35mmkgsfne",
         "connection/eightballer/http_client/0.1.0": "bafybeidbonr55keq4cothrhhvjwevmu3vl34caqvlxk7n3mnrp2lyarws4",
         "protocol/valory/ledger_api/1.0.0": "bafybeidltb2fvcfokf7a2i3jnrf4kmmsn5bxmcrwdtbz2nrrzhpj4dlzwe",
-        "contract/eightballer/erc_20/0.1.0": "bafybeihzyver74cyqzngkzicirjnrphg464hzsyflngosrda7ickmvapzi",
         "protocol/valory/http/0.1.0": "bafybeibels7dv7ucflaeniwifbisvkegm5vrarrr5ctkcqebg4t7onba6a",
-        "protocol/eightballer/default/0.1.0": "bafybeicj23oli6dvzj22sfvtfc46duqzvbpis5yskq5f5t55qikvwjtfme",
-        "protocol/eightballer/fipa/0.1.0": "bafybeief7f7xh6lgqiqtk333jwdec7occpvlalankbwvrhndxupt44brja",
         "protocol/zarathustra/sql_crud/0.1.0": "bafybeihtjit3a57q56yjhj5cyhyiqitmab5xdecwgoaq2gunm36l6kbi3q"
     }
 }
