@@ -80,5 +80,15 @@ make_meta:
 	adev metadata generate . protocol/eightballer/prometheus/1.0.0 0 && adev -v metadata validate  mints/0.json
 	adev metadata generate . connection/eightballer/prometheus/0.1.1 1 && adev -v metadata validate  mints/1.json
 	adev metadata generate . skill/eightballer/prometheus/0.1.0 2 && adev -v metadata validate  mints/2.json
-	adev metadata generate . skill/eightballer/faucet/0.1.0 3 && adev -v metadata validate  mints/3.json
+	# we need to have the default protocol and the fipa protocol and the contract
+	adev metadata generate . protocol/eightballer/default/0.1.0 3 && adev -v metadata validate  mints/3.json
+	adev metadata generate . protocol/eightballer/fipa/0.1.0 4 && adev -v metadata validate  mints/4.json
+	adev metadata generate . contract/eightballer/erc_20/0.1.0 5 && adev -v metadata validate  mints/5.json
+	
+	adev metadata generate . skill/eightballer/balance_metrics/0.1.0 6 && adev -v metadata validate  mints/6.json
+	adev metadata generate . skill/eightballer/faucet/0.1.0 7 && adev -v metadata validate  mints/7.json
+	# agent
+	adev metadata generate . agent/eightballer/defi_agent/0.1.0 8 && adev -v metadata validate  mints/8.json
+	# service
+	adev metadata generate . service/eightballer/multichain_faucet/0.1.0 9 && adev -v metadata validate  mints/9.json
 
