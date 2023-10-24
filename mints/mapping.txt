@@ -50,4 +50,6 @@ token_id-"component_id"
 153-skill/eightballer/balance_metrics/0.1.0
 154-skill/eightballer/faucet/0.1.0
 # agent
-?-agent/eightballer/defi_agent/0.1.0
+22-agent/eightballer/defi_agent/0.1.0
+# service
+18-service/eightballer/multichain_faucet/0.1.0
