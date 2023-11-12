@@ -2,6 +2,12 @@ version: '3.7'
 services:
 
 
+  frontend:
+    build: ./frontend
+    ports:
+      - 3000:3000
+
+
   prometheus:
     extra_hosts:
         - "host.docker.internal:host-gateway"

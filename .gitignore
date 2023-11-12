@@ -1,5 +1,4 @@
 data
-.*
 !.gitignore
 !.dockerignore
 !.env.template
@@ -25,4 +24,5 @@ packages/valory/protocols/
 agent/
 service/
 
+.svelte-kit
 
