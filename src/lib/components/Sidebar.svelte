@@ -20,22 +20,10 @@
 	import AddressSelect from '$lib/components/AddressSelect.svelte';
 	import { getWeb3Details } from '$lib/utils';
 	import { onMount } from 'svelte';
-	import { AuthType, SismoConnect } from '@sismo-core/sismo-connect-client';
 
 	const config = {
 		appId: '0xeec97b4773c0d5e387718eaf5ab6b6af'
 	};
-
-	const sismoConnect = SismoConnect({
-		config
-	});
-
-	// auth request for a proof of Twitter account ownership
-	const twitterRequest = {
-		authType: AuthType.TWITTER
-	};
-
-	onMount(() => {});
 
 	const chains = [
 		mainnet,
@@ -65,11 +53,6 @@
 		placement: 'top'
 	};
 
-	const sismoHover = {
-		event: 'hover',
-		target: 'sismoHover',
-		placement: 'top'
-	};
 
 	/**
 	 * @type {any}
@@ -87,11 +70,6 @@
 	/**
 	 * @type {any}
 	 */
-	$: sismo = {};
-
-	/**
-	 * @type {any}
-	 */
 	export let data;
 
 	const { account } = getWeb3Details();
@@ -100,19 +78,6 @@
 			resMsg = '';
 		}, 5000);
 	}
-
-	function handleSismo() {
-		sismoConnect.request({
-			claims: [{ groupId: '0x8884b2516b733c4e1c1525c550694b15' }],
-			namespace: 'sismo-edition'
-		});
-	}
-
-	onMount(() => {
-		sismo = sismoConnect.getResponse();
-		console.log(sismo);
-		console.log(sismo?.proofs);
-	});
 </script>
 
 <div class="sidebar">
@@ -179,11 +144,9 @@
 							{/if}
 						</svelte:fragment>
 					</TabGroup>
-					{#if sismo?.proofs?.length}
-						<button use:popup={popupHover} type="submit" class="btn variant-ghost-secondary w-full"
-							>Claim</button
-						>
-					{/if}
+          <button use:popup={popupHover} type="submit" class="btn variant-ghost-secondary w-full"
+            >Claim</button
+          >
 					{#if loading}
 						<div class="pt-2 status">Loading...</div>
 					{/if}
@@ -191,21 +154,12 @@
 						<div class="pt-2 status">{resMsg}</div>
 					{/if}
 				</form>
-				{#if !sismo?.proofs?.length}
-					<button use:popup={sismoHover} class="btn variant-ghost-secondary" on:click={handleSismo}
-						>Sismo</button
-					>
-				{/if}
 			</div>
 			<img class="faucet-img" src="/faucet2.png" alt="faucet" />
 		</div>
 	</div>
 	<div class="card p-4 variant-filled-secondary" data-popup="popupHover">
 		<p>Select a ledger to claim tokens from a faucet</p>
-		<div class="arrow variant-filled-secondary" />
-	</div>
-	<div class="card p-4 variant-filled-secondary" data-popup="sismoHover">
-		<p>Validate the ownership of Olas with Sismo</p>
 		<div class="arrow variant-filled-secondary" />
 	</div>
 </div>
