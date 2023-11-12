@@ -53,7 +53,6 @@
 		placement: 'top'
 	};
 
-
 	/**
 	 * @type {any}
 	 */
@@ -84,7 +83,7 @@
 	<div class="flex pt-4 header">
 		<img class="logo" src="/logo4.png" alt="logo" />
 		<div class="title">
-			<div>FAUCETATION</div>
+			<div>HYDRATION</div>
 			<div>STATION</div>
 		</div>
 		<div class="pl-10 connect-btn">
@@ -144,9 +143,9 @@
 							{/if}
 						</svelte:fragment>
 					</TabGroup>
-          <button use:popup={popupHover} type="submit" class="btn variant-ghost-secondary w-full"
-            >Claim</button
-          >
+					<button use:popup={popupHover} type="submit" class="btn variant-ghost-secondary w-full"
+						>Claim</button
+					>
 					{#if loading}
 						<div class="pt-2 status">Loading...</div>
 					{/if}
