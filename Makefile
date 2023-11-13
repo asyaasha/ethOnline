@@ -14,7 +14,6 @@ clean-build:
 	find . -name '*.egg-info' -exec rm -fr {} +
 	find . -name '*.egg' -exec rm -fr {} +
 	find . -name '*.svn' -exec rm -fr {} +
-	find -name 'packages/**/*.db' -exec rm -fr {} +
 	rm -fr .idea .history
 	rm -fr venv
 	rm -rf packages/tmp 
