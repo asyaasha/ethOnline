@@ -1,5 +1,12 @@
 # Makefile
 
+.PHONY:
+install:
+	poetry run pip install 'cython<3.0.0'
+	poetry run pip install pyyaml==5.4.1 --no-build-isolation -v
+	poetry install --no-root
+
+
 .PHONY: clean
 clean: clean-build clean-pyc clean-test clean-docs
 
@@ -62,7 +69,7 @@ test:
 all: fmt lint test hashes
 
 run_agent: clean-build
-	 bash scripts/run_single_agent.sh eightballer/defi_agent
+	 poetry run bash scripts/run_single_agent.sh eightballer/defi_agent
 
 pull_from_main:
 	git checkout main
