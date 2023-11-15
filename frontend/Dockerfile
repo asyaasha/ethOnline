@@ -9,3 +9,8 @@ ENV GRAFANA_URL=grafana.station.codes
 RUN npm install
 COPY . .
 CMD ["npm", "run", "build"]
+
+FROM nginx:1.25
+COPY --from=build /app/build/ /usr/share/nginx/html
+# Copy the default nginx.conf provided by tiangolo/node-frontend
+COPY nginx.conf /etc/nginx/conf.d/default.conf
