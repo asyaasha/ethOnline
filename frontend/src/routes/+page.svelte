@@ -13,14 +13,9 @@
 	let url = '';
 	$: inputUrl = url;
 
-    $: faucetAdddress = '0x5206Cb0140B3a3C12833e12235d1654Ceec02C94';
-    const txns = [];
-
-
-
-
+	$: faucetAdddress = '0x5206Cb0140B3a3C12833e12235d1654Ceec02C94';
+	const txns = [];
 </script>
-
 
 <div>
 	<input type="text" placeholder="Enter your grafana url" bind:value={url} />
@@ -29,7 +24,7 @@
 	</div>
 	<div class="connected mt-2 ml-2">
 		Faucet Address: {faucetAdddress}
-    </div>
+	</div>
 </div>
 <div class="container">
 	<iframe
