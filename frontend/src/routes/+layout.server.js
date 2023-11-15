@@ -1,4 +1,5 @@
 const base = 'http://0.0.0.0:5555';
+export const prerender = true;
 
 export async function load({ fetch }) {
 	const response = await fetch(`${base}/ledgers`);

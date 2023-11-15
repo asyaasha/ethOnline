@@ -15,7 +15,17 @@ const config = {
 			fallback: undefined,
 			precompress: false,
 			strict: true
-		})
+		}),
+		prerender: {
+			handleHttpError: ({ path, referrer, message }) => {
+				// Log the error for information
+				console.warn(
+					`Ignoring HTTP error during prerender: at ${path}, referred by ${referrer} message: (${message})`
+				);
+				// Return false to ignore all HTTP errors
+				return false;
+			}
+		}
 	},
 
 	preprocess: [vitePreprocess({})]
