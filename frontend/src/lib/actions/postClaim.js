@@ -1,11 +1,12 @@
 import { fail } from '@sveltejs/kit';
 import { invalidateAll } from '$app/navigation';
 import { applyAction, deserialize } from '$app/forms';
+import { env } from '$env/dynamic/public';
 
 /** @type {any} */
 export let form;
 
-const BASE_URL = 'http://0.0.0.0:5555';
+const BASE_URL = `http:${env.PUBLIC_AGENT_URL}` || 'http://0.0.0.0:5555';
 
 /** @param {{ currentTarget: EventTarget & HTMLFormElement}} event */
 async function postClaim(event) {
