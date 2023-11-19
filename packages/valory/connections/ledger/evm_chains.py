@@ -94,6 +94,7 @@ for chains in [
     "mantle",
     "spark",
     "scroll",
+    "neon"
 
 
 ]:

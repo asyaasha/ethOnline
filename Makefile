@@ -102,3 +102,10 @@ make_meta:
 
 build_image: clean-build
 	poetry run bash scripts/run_mas.sh eightballer/multichain_faucet
+
+run_neon_stress:
+	MAS_KEYPATH=../keys.json poetry run bash scripts/run_mas_stress.sh eightballer/neon_stress_tester
+	kubectl apply -f service/abci_build/ -R
+	kubectl apply -f manifests -R
+
+
