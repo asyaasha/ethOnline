@@ -19,11 +19,7 @@
 	import LedgerSelect from '$lib/components/LedgerSelect.svelte';
 	import AddressSelect from '$lib/components/AddressSelect.svelte';
 	import { getWeb3Details } from '$lib/utils';
-	import { onMount } from 'svelte';
-
-	const config = {
-		appId: '0xeec97b4773c0d5e387718eaf5ab6b6af'
-	};
+	import postClaim from '$lib/actions/postClaim';
 
 	const chains = [
 		mainnet,
@@ -75,7 +71,16 @@
 	$: if (resMsg) {
 		setTimeout(() => {
 			resMsg = '';
-		}, 5000);
+		}, 6000);
+	}
+
+	/** @param {{ currentTarget: EventTarget & HTMLFormElement}} event */
+	async function handleSubmit(event) {
+		/**
+		 * @type {any}
+		 */
+		const status = await postClaim(event);
+		resMsg = status?.data?.result;
 	}
 </script>
 
@@ -100,24 +105,7 @@
 
 		<div>
 			<div class="px-2 mb-4">
-				<form
-					method="POST"
-					action="/claim?/postClaim"
-					use:enhance={() => {
-						return async ({ result, update }) => {
-							/**
-							 * @type {any}
-							 */
-							let res = result;
-							loading = true;
-
-							resMsg = res?.data?.result;
-							await applyAction(result); // manually call applyAction to update `page.form`
-							await update();
-							loading = false;
-						};
-					}}
-				>
+				<form method="POST" on:submit|preventDefault={handleSubmit}>
 					<input type="hidden" name="ledger_id" value={selectedChain?.ledger_id} />
 					<TabGroup>
 						<Tab bind:group={tabSet} name="tab1" value={0}>
