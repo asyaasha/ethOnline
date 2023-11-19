@@ -55,6 +55,7 @@ EVM_LEDGERS = {
         "mantle",
         "spark",
         "scroll",
+        "neon-testnet"
     ]
 }
 
