@@ -26,6 +26,7 @@ clean-build:
 	rm -rf packages/tmp 
 	rm -rf packages/eightballer/agents/agent
 	rm -rf agent
+	rm -rf service
 
 .PHONY: clean-docs
 clean-docs:
@@ -98,3 +99,6 @@ make_meta:
 	# service
 	adev metadata generate . service/eightballer/multichain_faucet/0.1.0 9 && adev -v metadata validate  mints/9.json
 
+
+build_image: clean-build
+	poetry run bash scripts/run_mas.sh eightballer/multichain_faucet
