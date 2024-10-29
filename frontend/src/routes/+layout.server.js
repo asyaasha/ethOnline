@@ -1,11 +1,12 @@
-// since there's no dynamic data here, we can prerender
-// it so that it gets served as a static asset in production
-//export const prerender = true;
-const base = 'http://0.0.0.0:5555';
+import { env } from '$env/dynamic/public';
+
+const BASE_URL = `http:${env.PUBLIC_AGENT_URL}` || 'http://0.0.0.0:5555';
+
+export const prerender = true;
 
 export async function load({ fetch }) {
-	const response = await fetch(`${base}/ledgers`);
-	const resWhitelisted = await fetch(`${base}/whitelisted`);
+	const response = await fetch(`${BASE_URL}/ledgers`);
+	const resWhitelisted = await fetch(`${BASE_URL}/whitelisted`);
 	const data = await response.json();
 	const whitelisted = await resWhitelisted.json();
 
